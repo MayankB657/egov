@@ -17,7 +17,7 @@ class InwardLetterController extends Controller
     public function index(Request $request)
     {
         $searchQuery = $request->input('search');
-        $data = Letter::where('is_deleted', 0)
+        $data = Letter::where('is_deleted', 0)->with('branch')
             ->where(function ($query) use ($searchQuery) {
                 if (!empty($searchQuery)) {
                     $query->where('letter.inward_no', 'like', '%' . $searchQuery . '%')
@@ -50,11 +50,11 @@ class InwardLetterController extends Controller
             DB::beginTransaction();
             $max_size = config('app.max_upload_size');
             $validator = Validator::make($request->all(), [
-                'letter_no' => 'unique:letter,letter_no',
+                'letter_no' => 'nullable|unique:letter,letter_no',
                 'media_files' => 'nullable|array|max:5',
-                'media_files.*' => "nullable|file|mimes:pdf,jpg,jpeg,png|max:$max_size",
+                'media_files.*' => "file|mimes:pdf,jpg,jpeg,png|max:$max_size",
             ], [
-                'letter_no.unique' => 'Letter number already exists',
+                'letter_no.unique' => 'Letter number already exists.',
                 'media_files.max' => 'You can upload a maximum of 5 files.',
                 'media_files.*.file' => 'Each upload must be a valid file.',
                 'media_files.*.mimes' => 'Allowed file types: pdf, jpg, jpeg, png.',
@@ -110,6 +110,7 @@ class InwardLetterController extends Controller
                 }
             }
             DB::commit();
+            return response()->json(['status' => true, 'msg' => 'Inward letter added successfully.', 'url' => route('inward-letter.index')]);
         } catch (\Throwable $th) {
             DB::rollback();
             return response()->json(['status' => 'false', 'msg' => $th->getMessage()]);

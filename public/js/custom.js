@@ -460,26 +460,38 @@ $(document).on('submit', '.ajax-form-submit', function (e) {
                     }
                 } else {
                     if (response.errors) {
-                        let firstErrorInput = null;
+                        let modalBody = $(document).find(id).find('div.scroll-y');
                         var errors = response.errors;
+                        let firstErrorInput = null;
                         $.each(errors, function (field, messages) {
                             var inputField = form.find(`[name="${field}"]`);
-                            var div = inputField.closest('div.form-group');
-                            var errorElement = $(`<div class="text-danger error"><div>${messages[0]}</div></div>`);
-                            div.append(errorElement);
-                            if (!firstErrorInput) {
-                                firstErrorInput = inputField;
+                            if (inputField.length === 0) {
+                                inputField = form.find(`[name="${field}[]"]`);
+                            }
+                            if (inputField.length) {
+                                var div = inputField.closest('div.form-group');
+                                var errorElement = $(`<div class="text-danger error"><div>${messages[0]}</div></div>`);
+                                div.append(errorElement);
+                                if (!firstErrorInput) {
+                                    firstErrorInput = inputField;
+                                }
+                            }else{
+                                Toast.fire({
+                                    icon: "error",
+                                    title: messages[0]
+                                });
                             }
                         });
-                        if (firstErrorInput) {
-                            var id = '#' + form.data('dismiss-modal');
-                            let modalBody = $(document).find(id).find('div.scroll-y');
-                            let inputOffset = firstErrorInput.offset();
-                            $(modalBody).stop().animate({
-                                scrollTop: inputOffset.top
-                            }, 500, function () {
-                                firstErrorInput.focus();
-                            });
+                        if (modalBody.length != 0) {
+                            if (firstErrorInput) {
+                                var id = '#' + form.data('dismiss-modal');
+                                let inputOffset = firstErrorInput.offset();
+                                $(modalBody).stop().animate({
+                                    scrollTop: inputOffset.top
+                                }, 500, function () {
+                                    firstErrorInput.focus();
+                                });
+                            }
                         }
                     } else {
                         if (response.reset == true) {

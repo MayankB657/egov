@@ -39,6 +39,7 @@
                                         <th class="min-w-125px">Subject</th>
                                         <th class="min-w-125px">Letter Number</th>
                                         <th class="min-w-125px">Status</th>
+                                        <th class="min-w-125px">Date</th>
                                         <th class="text-end min-w-100px">Actions</th>
                                     </tr>
                                 </thead>

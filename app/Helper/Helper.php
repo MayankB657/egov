@@ -33,7 +33,6 @@ class Helper
     public static function datetimeFormat($datetime)
     {
         if ($datetime != null) {
-            # code...
             return Carbon::parse($datetime)->format('d M Y, h:i a');
         }
         return null;
@@ -42,6 +41,11 @@ class Helper
     public static function timeFormat($datetime)
     {
         return Carbon::parse($datetime)->format('h:i a');
+    }
+
+    public static function dateFormat($datetime)
+    {
+        return Carbon::parse($datetime)->format('d M Y');
     }
 
     public static function randomBsColor()
