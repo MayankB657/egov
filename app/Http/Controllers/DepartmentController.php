@@ -87,4 +87,22 @@ class DepartmentController extends Controller
             return redirect()->route('department.index')->with('error', $th->getMessage());
         }
     }
+
+    public function AddDepartment(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $data = new Department();
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->contact = $request->contact;
+            $data->created_by = auth()->id();
+            $data->save();
+            DB::commit();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $th->getMessage()]);
+        }
+    }
 }

@@ -45,7 +45,7 @@
                         @can('inward-letter.create')
                             <div class="menu-item">
                                 <a class="menu-link {{ Route::is('inward-letter.create') ? 'active' : '' }}"
-                                    href="{{ route('inward-letter.index') }}">
+                                    href="{{ route('inward-letter.create') }}">
                                     <span class="menu-icon">
                                         <i class="bi bi-person-heart fs-3"></i>
                                     </span>

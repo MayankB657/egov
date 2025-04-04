@@ -99,4 +99,24 @@ class BranchController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
+
+    public function AddBranch(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $data = new Branch();
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->contact = $request->contact;
+            $data->address = $request->address;
+            $data->department_id = $request->department_id;
+            $data->created_by = auth()->id();
+            $data->save();
+            DB::commit();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $th->getMessage()]);
+        }
+    }
 }

@@ -1,11 +1,24 @@
 @foreach ($data as $row)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $row->inward_no }}</td>
+        <td>
+            <div>{{ $row->inward_no }}</div>
+            <div class="badge badge-secondary">{{ Helper::dateFormat($row->date) }}</div>
+        </td>
         <td>{{ $row->outward_no }}</td>
         <td>{{ $row->subject->name }}</td>
-        <td>{{ $row->letter_no }}</td>
-        <td>{{ $row->status }}</td>
+        <td>{{ $row->letter_type == 'File' ? $row->rack_no : $row->letter_no }}</td>
+        <td><span class="badge badge-{{ Helper::statusColor($row->status) }}">{{ $row->status }}</span></td>
+        <td>
+            @php
+                $latestLog = $row->logs->sortByDesc('created_at')->first();
+            @endphp
+            @if ($latestLog?->comment)
+                {{ $latestLog->comment }}
+            @else
+                {{ $latestLog?->status }}
+            @endif
+        </td>
         <td>{{ Helper::dateFormat($row->created_at) }}</td>
         <td class="d-flex justify-content-end border-0">
             <a href="{{ route('inward-letter.edit', base64UrlEncode($row->id)) }}"

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Letter extends Model
 {
@@ -11,18 +12,28 @@ class Letter extends Model
     public $primaryKey = 'id';
     public $timestamps = true;
 
-    public function subject():BelongsTo
+    public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
-    public function department():BelongsTo
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
 
-    public function branch():BelongsTo
+    public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
+    public function mediafiles(): HasMany
+    {
+        return $this->hasMany(LetterFiles::class, 'letter_id');
+    }
+
+    public function logs(): HasMany
+    {
+        return $this->hasMany(LetterLog::class, 'letter_id');
     }
 }

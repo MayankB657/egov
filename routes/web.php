@@ -26,6 +26,10 @@ Route::get('clear', function () {
     Artisan::call('view:clear');
     return view('errors.clear');
 })->name('Clear');
+Route::get('migrate', function () {
+    Artisan::call('migrate');
+    return redirect()->route('Clear');
+});
 
 Route::middleware(['user.auth', 'permission', 'lastactivity'])->group(static function () {
     Route::resource('role-permission', RolePermissionController::class);
@@ -47,6 +51,9 @@ Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
     Route::get('markallread', [ProfileController::class, 'MarkAllRead'])->name('MarkAllRead');
     Route::get('shownotification/{id}', [ProfileController::class, 'ShowNotification'])->name('ShowNotification');
     Route::get('get-branches/{department_id}', [SubjectController::class, 'getBranches'])->name('getBranches');
+    Route::post('add-subject', [SubjectController::class, 'AddSubject'])->name('AddSubject');
+    Route::post('add-department', [DepartmentController::class, 'AddDepartment'])->name('AddDepartment');
+    Route::post('add-branch', [BranchController::class, 'AddBranch'])->name('AddBranch');
 });
 
 Route::get('run-queue', function () {

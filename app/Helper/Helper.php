@@ -59,4 +59,22 @@ class Helper
         ];
         return $colors[rand(0, 4)];
     }
+
+    public static function statusColor($status)
+    {
+        switch ($status) {
+            case 'Received':
+                return 'primary';
+                break;
+            case 'In Process':
+                return 'warning';
+                break;
+            case 'Rejected':
+                return 'danger';
+                break;
+            case 'Signed':
+                return 'success';
+                break;
+        }
+    }
 }

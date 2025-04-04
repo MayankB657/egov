@@ -100,4 +100,22 @@ class SubjectController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
+
+    public function AddSubject(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $data = new Subject();
+            $data->name = $request->name;
+            $data->department_id = $request->department_id;
+            $data->branch_id = $request->branch_id;
+            $data->created_by = auth()->id();
+            $data->save();
+            DB::commit();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $th->getMessage()]);
+        }
+    }
 }
