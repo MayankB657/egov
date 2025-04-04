@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Letter extends Model
+{
+    protected $table = 'letter';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+}

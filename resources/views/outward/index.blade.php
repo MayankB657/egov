@@ -1,0 +1,11 @@
+<x-app-layout>
+    @push('title')
+        Outward
+    @endpush
+    @section('content')
+    @endsection
+    @push('js')
+        <script>
+        </script>
+    @endpush
+</x-app-layout>

@@ -1,0 +1,9 @@
+<x-app-layout>
+    @push('title')
+        Dashboard
+    @endpush
+    @section('content')
+    @endsection
+    @push('js')
+    @endpush
+</x-app-layout>

@@ -1,0 +1,12 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+class {{ class }} extends Pivot
+{
+    protected $table = '';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+}
