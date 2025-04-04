@@ -60,20 +60,20 @@ class DatabaseSeeder extends Seeder
             CountriesSeeder::class,
         ]);
         //while in development only
-        SiteSettings::create([
-            'appkey' => config('app.key'),
-            'title' => "MB Super",
-            'logo' => "public/images/logo.svg",
-            'favicon' => "public/images/favicon-32x32.png",
-            'copyright' => "© All rights reserved",
-        ]);
-        $user = User::create([
-            'name' => "Mayank Bhandure",
-            'email' => "mayu.bhandure657@gmail.com",
-            'email_verified_at' => now(),
-            'password' => Hash::make('12345'),
-        ]);
-        $user->assignRole($adminRole);
+        // SiteSettings::create([
+        //     'appkey' => config('app.key'),
+        //     'title' => "MB Super",
+        //     'logo' => "public/images/logo.svg",
+        //     'favicon' => "public/images/favicon-32x32.png",
+        //     'copyright' => "© All rights reserved",
+        // ]);
+        // $user = User::create([
+        //     'name' => "Mayank Bhandure",
+        //     'email' => "mayu.bhandure657@gmail.com",
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('12345'),
+        // ]);
+        // $user->assignRole($adminRole);
     }
 
     private function createResourcePermissions($resourceName, $controllerName)
