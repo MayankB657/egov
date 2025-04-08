@@ -267,7 +267,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Comment
+                                            Remark
                                         </label>
                                         <textarea name="comment" rows="4" class="form-control" placeholder="Enter Comment">{{ $data->comment }}</textarea>
                                     </div>
@@ -288,24 +288,23 @@
                                                     $ext = pathinfo($file->file_path, PATHINFO_EXTENSION);
                                                 @endphp
                                                 @if ($ext == 'pdf')
-                                                    <div class="fv-row col-lg-4 mb-5 px-0">
-                                                        <div
-                                                            class="btn btn-primary position-relative btn-sm m-0">
+                                                    <div class="fv-row col-lg-4 mb-5 px-0 file">
+                                                        <div class="btn btn-primary position-relative btn-sm m-0">
                                                             <a class="text-white"
                                                                 href="{{ url('/') }}/public/ViewerJS/#{{ url('/') }}/{{ $file->file_path }}">{{ $file->file_name }}</a>
-                                                            <span
+                                                            <span data-id="{{ $file->id }}"
                                                                 class="position-absolute top-5 start-100 translate-middle badge badge-circle badge-sm badge-danger btnRemoveFile">x</span>
                                                         </div>
-                                                    @else
-                                                        <div class="fv-row col-lg-4 mb-5 px-0">
-                                                            <div
-                                                                class="btn btn-primary position-relative btn-sm m-0">
-                                                                <a data-fslightbox="lightbox-basic" class="text-white"
-                                                                    href="{{ url('/') }}/{{ $file->file_path }}">{{ $file->file_name }}</a>
-                                                                <span
-                                                                    class="position-absolute top-5 start-100 translate-middle badge badge-circle badge-sm badge-danger btnRemoveFile">x</span>
-                                                            </div>
+                                                    </div>
+                                                @else
+                                                    <div class="fv-row col-lg-4 mb-5 px-0 file">
+                                                        <div class="btn btn-primary position-relative btn-sm m-0">
+                                                            <a data-fslightbox="lightbox-basic" class="text-white"
+                                                                href="{{ url('/') }}/{{ $file->file_path }}">{{ $file->file_name }}</a>
+                                                            <span data-id="{{ $file->id }}"
+                                                                class="position-absolute top-5 start-100 translate-middle badge badge-circle badge-sm badge-danger btnRemoveFile">x</span>
                                                         </div>
+                                                    </div>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -757,9 +756,6 @@
                         }
                     });
                 }
-            });
-            $(document).on('click', '.btnRemoveFile', function(e) {
-                e.preventDefault();
             });
         </script>
     @endpush

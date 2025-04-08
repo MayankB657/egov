@@ -25,8 +25,7 @@
         </div>
     </div>
     <div class="toolbar d-flex align-items-stretch">
-        <div
-            class="container-fluid py-6 py-lg-0 d-flex flex-row align-items-stretch justify-content-between">
+        <div class="container-fluid py-6 py-lg-0 d-flex flex-row align-items-stretch justify-content-between">
             <div class="page-title d-flex justify-content-center flex-column me-5">
                 <h1 class="d-flex flex-column text-gray-900 fw-bold fs-3 mb-0">
                     @stack('title')
@@ -147,13 +146,33 @@
                             </a>
                         </div>
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                data-kt-value="system">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="system">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="bi bi-display fs-2"></i>
                                 </span>
                                 <span class="menu-title">System</span>
                             </a>
+                        </div>
+                    </div>
+                    <div class="ms-1 ms-md-2" data-kt-menu-trigger="{default:'click', lg: 'hover'}"
+                        data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                        <a href="#" class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary">
+                            <i class="bi bi-translate fs-4"></i>
+                        </a>
+                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-gray-500 menu-active-bg menu-state-color fw-semibold py-4 fs-base w-150px"
+                            data-kt-menu="true">
+                            <div class="menu-item px-3 my-0">
+                                <a href="{{ route('ChangeLanguage', ['lang' => 'en']) }}"
+                                    class="menu-link px-3 py-2 langChange">
+                                    <span class="menu-title">English</span>
+                                </a>
+                            </div>
+                            <div class="menu-item px-3 my-0">
+                                <a href="{{ route('ChangeLanguage', ['lang' => 'mr']) }}"
+                                    class="menu-link px-3 py-2 langChange">
+                                    <span class="menu-title">मराठी</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

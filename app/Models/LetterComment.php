@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class LetterLog extends Model
+class LetterComment extends Model
 {
-    protected $table = 'letter_log';
+    protected $table = 'letter_comments';
     public $primaryKey = 'id';
     public $timestamps = true;
 

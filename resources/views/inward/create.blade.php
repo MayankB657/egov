@@ -235,7 +235,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Comment
+                                            Remark
                                         </label>
                                         <textarea name="comment" rows="4" class="form-control" placeholder="Enter Comment"></textarea>
                                     </div>

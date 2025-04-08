@@ -191,7 +191,7 @@ class UsersController extends Controller
         $currentId = Auth::id();
         if (session()->has('return_admin')) {
             session()->forget('return_admin');
-        }else{
+        } else {
             session()->put('return_admin', $currentId);
         }
         $user = User::find($id);
@@ -201,5 +201,13 @@ class UsersController extends Controller
         } else {
             return redirect()->back()->with('error', 'User not found.');
         }
+    }
+
+    public function ChangeLanguage($lang)
+    {
+        $user = Auth::user();
+        $user->language = $lang;
+        $user->save();
+        return redirect()->back()->with('success', 'Language changed successfully.');
     }
 }

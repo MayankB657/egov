@@ -58,6 +58,7 @@ return [
     'app_installed' => env('APP_INSTALLED', false),
     'encryption_key' => env('ENCRYPTION_KEY', '123'),
     'max_upload_size' => env('MAX_UPLOAD_SIZE', 5120),
+    'max_uploads' => env('MAX_UPLOADS', 5),
 
     /*
     |--------------------------------------------------------------------------

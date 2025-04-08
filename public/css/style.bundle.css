@@ -55001,7 +55001,7 @@ code:not([class*=language-]).code-dark {
 .timeline-label:before {
     content: "";
     position: absolute;
-    left: 81px;
+    left: 201px;
     width: 3px;
     top: 0;
     bottom: 0;

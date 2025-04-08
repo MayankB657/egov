@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use App\Models\Letter;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,18 @@ class Helper
             case 'Signed':
                 return 'success';
                 break;
+            default:
+                return 'info';
+                break;
         }
+    }
+
+    public static function inwardDate($inward_no)
+    {
+        $inward = Letter::where('inward_no', $inward_no)->where('type','inward')->first();
+        if ($inward) {
+            return Carbon::parse($inward->created_at)->format('d M Y');
+        }
+        return null;
     }
 }

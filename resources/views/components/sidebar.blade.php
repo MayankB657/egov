@@ -15,7 +15,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-microsoft fs-4"></i>
                         </span>
-                        <span class="menu-title">Dashboard</span>
+                        <span class="menu-title">{{ __('labels.dashboard') }}</span>
                     </a>
                 </div>
                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start"
@@ -24,7 +24,7 @@
                         class="menu-link {{ Route::is('inward-letter*') || Route::is('outward-letter*') ? 'active' : '' }}"
                         onclick="redirectToIndex('inward-letter')">
                         <span class="menu-icon">
-                            <i class="bi bi-people-fill fs-2"></i>
+                            <i class="bi bi-envelope-fill fs-2"></i>
                         </span>
                         <span class="menu-title">Inward / Outward Management</span>
                         <span class="menu-arrow"><i class="bi bi-chevron-right fs-9 text-light"></i></span>
@@ -36,7 +36,7 @@
                                 <a class="menu-link {{ Route::is('inward-letter.index') ? 'active' : '' }}"
                                     href="{{ route('inward-letter.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-person-heart fs-3"></i>
+                                        <i class="bi bi-envelope-arrow-down fs-3"></i>
                                     </span>
                                     <span class="menu-title">Inward Letter</span>
                                 </a>
@@ -47,7 +47,7 @@
                                 <a class="menu-link {{ Route::is('inward-letter.create') ? 'active' : '' }}"
                                     href="{{ route('inward-letter.create') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-person-heart fs-3"></i>
+                                        <i class="bi bi-envelope-plus fs-3"></i>
                                     </span>
                                     <span class="menu-title">Add Inward Letter</span>
                                 </a>
@@ -55,12 +55,23 @@
                         @endcan
                         @can('outward-letter.index')
                             <div class="menu-item">
-                                <a class="menu-link {{ Route::is('outward-letter*') ? 'active' : '' }}"
+                                <a class="menu-link {{ Route::is('outward-letter.index') ? 'active' : '' }}"
                                     href="{{ route('outward-letter.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-person-fill-gear fs-3"></i>
+                                        <i class="bi bi-envelope-arrow-up fs-3"></i>
                                     </span>
                                     <span class="menu-title">Outward Letter</span>
+                                </a>
+                            </div>
+                        @endcan
+                        @can('outward-letter.create')
+                            <div class="menu-item">
+                                <a class="menu-link {{ Route::is('outward-letter.create') ? 'active' : '' }}"
+                                    href="{{ route('outward-letter.create') }}">
+                                    <span class="menu-icon">
+                                        <i class="bi bi-envelope-plus fs-3"></i>
+                                    </span>
+                                    <span class="menu-title">Add Outward Letter</span>
                                 </a>
                             </div>
                         @endcan
@@ -77,12 +88,7 @@
                         : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-element-11 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                            </i>
+                            <i class="bi bi-gear-fill fs-2"></i>
                         </span>
                         <span class="menu-title">Settings</span>
                         <span class="menu-arrow"></span>
@@ -146,7 +152,7 @@
                                 <a class="menu-link {{ Route::is('department*') ? 'active' : '' }}"
                                     href="{{ route('department.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-microsoft fs-4"></i>
+                                        <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
                                     <span class="menu-title">Department</span>
                                 </a>
@@ -157,7 +163,7 @@
                                 <a class="menu-link {{ Route::is('branch*') ? 'active' : '' }}"
                                     href="{{ route('branch.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-microsoft fs-4"></i>
+                                        <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
                                     <span class="menu-title">Branch</span>
                                 </a>
@@ -168,7 +174,7 @@
                                 <a class="menu-link {{ Route::is('subject*') ? 'active' : '' }}"
                                     href="{{ route('subject.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-microsoft fs-4"></i>
+                                        <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
                                     <span class="menu-title">Subject</span>
                                 </a>

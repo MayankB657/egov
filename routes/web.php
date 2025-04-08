@@ -54,6 +54,14 @@ Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
     Route::post('add-subject', [SubjectController::class, 'AddSubject'])->name('AddSubject');
     Route::post('add-department', [DepartmentController::class, 'AddDepartment'])->name('AddDepartment');
     Route::post('add-branch', [BranchController::class, 'AddBranch'])->name('AddBranch');
+    Route::get('get-letter-activity/{id}', [InwardLetterController::class, 'GetLetterActivity']);
+    Route::get('get-comment-model/{id}', [InwardLetterController::class, 'GetCommentModel']);
+    Route::post('add-letter-comment', [InwardLetterController::class, 'AddLetterComment'])->name('AddLetterComment');
+    Route::get('get-followup-model/{id}', [InwardLetterController::class, 'GetFollowupModel']);
+    Route::post('add-followup', [InwardLetterController::class, 'AddFollowup'])->name('AddFollowup');
+    Route::get('get-outward-content/{id}', [OutwardLetterController::class, 'GetOutwardContent']);
+    Route::get('remove-file/{id}', [InwardLetterController::class, 'RemoveFile'])->name('RemoveFile');
+    Route::get('change-language/{lang}', [UsersController::class, 'ChangeLanguage'])->name('ChangeLanguage');
 });
 
 Route::get('run-queue', function () {

@@ -299,6 +299,23 @@ function redirectToIndex(path) {
     }
 }
 
+//for filter get submit
+$(document).on('submit', '.ajax-get-submit', function (e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    var route = $(this).attr('action');
+    $.ajax({
+        type: "GET",
+        url: route,
+        data: formData,
+        success: function (response) {
+            $('.tablebody').html(response.html);
+            $('#pagination-container').html(response.pagination);
+            // KTMenu.createInstances();
+        }
+    });
+});
+
 let timer;
 $('#InputSearch').on('keyup', handleKeyup);
 $('#InputSearch').on('keypress', function (e) {
@@ -475,7 +492,7 @@ $(document).on('submit', '.ajax-form-submit', function (e) {
                                 if (!firstErrorInput) {
                                     firstErrorInput = inputField;
                                 }
-                            }else{
+                            } else {
                                 Toast.fire({
                                     icon: "error",
                                     title: messages[0]
@@ -704,3 +721,33 @@ if (target) {
         }, 3000)
     });
 }
+$(document).on('click', '.btnRemoveFile', function (e) {
+    e.preventDefault();
+    var element = $(this).closest('.file');
+    var id = $(this).data('id');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!"
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                type: "GET",
+                url: base_url + "//" + id,
+                success: function (response) {
+                    if(response.status == true){
+                        element.remove();
+                    }
+                }
+            });
+        }
+    });
+});
+
+$(document).on('click','.langChange',function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    window.location = url;
+});
