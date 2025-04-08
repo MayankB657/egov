@@ -244,7 +244,7 @@
                                     </form>
                                 </div>
                                 <div id="kt_signin_password_button" class="ms-auto">
-                                    <button class="btn btn-light btn-active-light-primary">Reset
+                                    <button class="btn btn-light btn-active-light-primary">{{ __('labels.reset') }}
                                         Password</button>
                                 </div>
                             </div>

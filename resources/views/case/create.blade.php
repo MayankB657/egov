@@ -1,12 +1,12 @@
 <x-app-layout>
     @push('title')
-        {{ __('labels.add_inward_letter') }}
+        {{ __('labels.add_case') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
                 <div class="card card-flush">
-                    <form action="{{ route('inward-letter.store') }}" autocomplete="off" method="POST"
+                    <form action="{{ route('case.store') }}" autocomplete="off" method="POST"
                         class="form ajax-form-submit" data-preloader="true" data-reset="true" data-refresh="true"
                         id="FormId" enctype="multipart/form-data">
                         @csrf
@@ -22,6 +22,7 @@
                                             <option hidden></option>
                                             <option value="Letter">Letter</option>
                                             <option value="File">File</option>
+                                            <option value="Note">Note</option>
                                             <option value="VIP Letter">VIP Letter</option>
                                         </select>
                                     </div>
@@ -69,7 +70,8 @@
                                     <div id="DivFile" class="d-none">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">{{ __('labels.file_name/file_number/location/rack_number') }}</span>
+                                                <span
+                                                    class="required">{{ __('labels.file_name/file_number/location/rack_number') }}</span>
                                             </label>
                                             <input class="form-control" name="rack_no"
                                                 placeholder="File Name / File Number / Location / Rack Number"
@@ -101,8 +103,8 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.courier_name') }}</span>
                                             </label>
-                                            <input class="form-control" name="courier_name" placeholder="Enter Courier Name"
-                                                data-bvalidator="required" />
+                                            <input class="form-control" name="courier_name"
+                                                placeholder="Enter Courier Name" data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
@@ -126,7 +128,8 @@
                                     <div id="DivPeopleRepresentitive" class="d-none">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">{{ __('labels.name_of_people_representative') }}</span>
+                                                <span
+                                                    class="required">{{ __('labels.name_of_people_representative') }}</span>
                                             </label>
                                             <input class="form-control" name="received_from_name2"
                                                 placeholder="Enter Name of People's Representative"
@@ -215,10 +218,10 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            {{ __('labels.concerned_authority') }}
+                                            {{ __('labels.concerned_officer') }}
                                         </label>
-                                        <input class="form-control" name="authority_name"
-                                            placeholder="Enter Concerned Authority" />
+                                        <input class="form-control" name="concerned_officer"
+                                            placeholder="Enter Concerned Officer" />
                                     </div>
                                 </div>
                             </div>
@@ -249,11 +252,21 @@
                                             data-bvalidator-msg="Please select file of type png, jpg, jpeg or pdf." />
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            {{ __('labels.holder_name') }}
+                                        </label>
+                                        <input class="form-control" name="holder_name"
+                                            placeholder="Enter Holder Number" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="text-end">
-                                <a href="{{ route('inward-letter.index') }}" class="btn btn-light me-3">{{ __('labels.discard') }}</a>
+                                <a href="{{ route('case.index') }}"
+                                    class="btn btn-light me-3">{{ __('labels.discard') }}</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('labels.submit') }}
                                 </button>
@@ -360,7 +373,8 @@
                                                 data-bvalidator="required" name="department_id" data-control="select2">
                                                 <option hidden></option>
                                                 @foreach ($departments as $department)
-                                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                    <option value="{{ $department->id }}">{{ $department->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -506,7 +520,7 @@
                 $('#DivFile').addClass('d-none');
                 if (letter_type == "File") {
                     $('#DivFile').removeClass('d-none');
-                } else {
+                } else if (letter_type == "Letter" || letter_type == "VIP Letter") {
                     $('#DivLetter').removeClass('d-none');
                 }
             });

@@ -23,6 +23,14 @@ class OutwardLetterController extends Controller
         $subjects = Subject::where('is_deleted', 0)->get();
         $branches = Branch::where('is_deleted', 0)->get();
         $query = Letter::with('branch')->where('is_deleted', 0)->where('type', 'outward');
+        $onlyOut = $request->onlyout ?? false;
+        $inout = $request->inout ?? false;
+        if ($onlyOut) {
+            $query->where('inward_no', null);
+        }
+        if ($inout) {
+            $query->where('inward_no', '!=', null);
+        }
         if ($search = $request->input('search')) {
             $query->where('inward_no', 'like', "%{$search}%")
                 ->orWhere('outward_no', 'like', "%{$search}%")
@@ -298,7 +306,7 @@ class OutwardLetterController extends Controller
                 }
             }
             DB::commit();
-            return response()->json(['status' => true, 'msg' => 'Inward letter updated successfully.', 'url' => route('inward-letter.index')]);
+            return response()->json(['status' => true, 'msg' => 'Outward letter updated successfully.', 'url' => route('outward-letter.index')]);
         } catch (\Throwable $th) {
             DB::rollback();
             return response()->json(['status' => 'false', 'msg' => $th->getMessage()]);

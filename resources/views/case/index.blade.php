@@ -1,18 +1,18 @@
 <x-app-layout>
     @push('title')
-        Inward Letter List
+        Cases
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
                 <div class="card card-flush mb-5">
                     <div class="card-body">
-                        <form action="{{ route('inward-letter.index') }}" class="form ajax-get-submit" method="GET">
+                        <form action="{{ route('case.index') }}" class="form ajax-get-submit" method="GET">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Subject
+                                            {{ __('labels.subject') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Subject"
                                             data-bvalidator="required" name="subject_id" data-control="select2">
@@ -28,7 +28,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Department
+                                            {{ __('labels.department') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Department"
                                             data-bvalidator="required" name="department_id" data-control="select2">
@@ -44,7 +44,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Branch
+                                            {{ __('labels.branch') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Branch"
                                             data-bvalidator="required" name="branch_id" data-control="select2">
@@ -60,19 +60,15 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Status
+                                            {{ __('labels.status') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Branch"
                                             data-bvalidator="required" name="status" data-control="select2">
                                             <option hidden></option>
-                                            <option value="Received" {{ request('status') == 'Received' ? 'selected' : '' }}>
-                                                Received</option>
-                                            <option value="In Process" {{ request('status') == 'In Process' ? 'selected' : '' }}>In
-                                                Process</option>
-                                            <option value="Rejected" {{ request('status') == 'Rejected' ? 'selected' : '' }}>
-                                                Rejected</option>
-                                            <option value="Signed" {{ request('status') == 'Signed' ? 'selected' : '' }}>Signed
-                                            </option>
+                                            <option value="Received">Received</option>
+                                            <option value="In Process">In Process</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Signed">Signed</option>
                                         </select>
                                     </div>
                                 </div>
@@ -83,7 +79,7 @@
                                             <button type="submit" class="btn btn-success me-3">
                                                 {{ __('labels.apply') }}
                                             </button>
-                                            <a href="{{ route('inward-letter.index') }}"
+                                            <a href="{{ route('case.index') }}"
                                                 class="btn btn-light">{{ __('labels.reset') }}</a>
                                         </div>
                                     </div>
@@ -102,16 +98,16 @@
                                 </i>
                                 <input type="text" class="form-control w-250px ps-13" placeholder="Search Inward Letter"
                                     name="search" value="{{ request('search') }}" id="InputSearch"
-                                    data-search-url="{{ route('inward-letter.index') }}" />
+                                    data-search-url="{{ route('case.index') }}" />
                             </div>
                         </div>
                         <div class="card-toolbar">
-                            <a href="{{ route('inward-letter.create') }}" class="btn btn-light-primary">
+                            <a href="{{ route('case.create') }}" class="btn btn-light-primary">
                                 <i class="ki-duotone ki-plus-square fs-3">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                     <span class="path3"></span>
-                                </i>Add Letter
+                                </i>{{ __('labels.add_case') }}
                             </a>
                         </div>
                     </div>
@@ -120,19 +116,20 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="">Sr.No</th>
-                                        <th class="min-w-125px">Inward Number</th>
-                                        <th class="min-w-125px">Outward Number</th>
-                                        <th class="min-w-125px">Subject</th>
-                                        <th class="min-w-125px">Letter Number</th>
-                                        <th class="min-w-125px">Status</th>
-                                        <th class="min-w-125px">Current Status</th>
-                                        <th class="min-w-125px">Created At</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        <th class="">{{ __('labels.sr_no') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.subject') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.description') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.letter_number') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.proposal_received_from') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.status') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.current_status') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.concerned_officer') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.created_at') }}</th>
+                                        <th class="text-end min-w-100px">{{ __('labels.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600 tablebody">
-                                    @include('inward.row', ['data' => $data, 'i' => $i])
+                                    @include('case.row', ['data' => $data, 'i' => $i])
                                 </tbody>
                             </table>
                             <div id="pagination-container">
@@ -152,7 +149,7 @@
             $(document).on('click', '.badgeStatus', function() {
                 let id = $(this).data('id');
                 $.ajax({
-                    url: base_url + '/get-letter-activity/' + id,
+                    url: base_url + '/get-case-activity/' + id,
                     type: "GET",
                     success: function(response) {
                         $('#StatusModel').html(response.html);
@@ -163,7 +160,7 @@
             $(document).on('click', '.addComment', function() {
                 let id = $(this).data('id');
                 $.ajax({
-                    url: base_url + '/get-comment-model/' + id,
+                    url: base_url + '/get-comment-model/' + id + '?type=case',
                     type: "GET",
                     success: function(response) {
                         $('#CommentModel').html(response.html);
@@ -175,7 +172,7 @@
             $(document).on('click', '.addFollowup', function() {
                 let id = $(this).data('id');
                 $.ajax({
-                    url: base_url + '/get-followup-model/' + id,
+                    url: base_url + '/get-followup-model/' + id + '?type=case',
                     type: "GET",
                     success: function(response) {
                         $('#FollowupModel').html(response.html);

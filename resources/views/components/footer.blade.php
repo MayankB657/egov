@@ -10,7 +10,7 @@
         </div>
         <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
             <li>
-                <span id="LiveTime"></span>
+                <span id="LiveDate"></span>&nbsp;<span id="LiveTime"></span>
             </li>
         </ul>
     </div>

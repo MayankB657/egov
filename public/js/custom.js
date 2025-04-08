@@ -143,8 +143,11 @@ $(document).ready(function () {
     });
 
     function updateClock() {
+        if ($('#LiveDate')) {
+            $('#LiveDate').html(moment().locale(lang).format('dddd DD/MM/YYYY'));
+        }
         if ($('#LiveTime')) {
-            $('#LiveTime').html(moment().format('hh:mm:ss A'));
+            $('#LiveTime').html(moment().locale(lang).format('hh:mm:ss A'));
         }
     }
     setInterval(updateClock, 1000);

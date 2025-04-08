@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'subject', 'controller' => 'SubjectController', 'roles' => [$adminRole]],
             ['name' => 'inward-letter', 'controller' => 'InwardLetterController', 'roles' => [$adminRole]],
             ['name' => 'outward-letter', 'controller' => 'OutwardLetterController', 'roles' => [$adminRole]],
+            ['name' => 'case', 'controller' => 'CaseController', 'roles' => [$adminRole]],
         ];
 
         foreach ($resourcePermissions as $resource) {

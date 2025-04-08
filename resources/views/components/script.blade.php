@@ -6,7 +6,8 @@
 <script src="{{ url('/') }}/public/js/profile/deactivate-account.js"></script>
 <!--end::Profile Page-->
 <script src="{{ url('/') }}/public/js/intlTelInput.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+<script src="{{ url('/') }}/public/js/moment.js"></script>
+<script src="{{ url('/') }}/public/js/moment-mr.js"></script>
 <script>
     const telinput = document.querySelector(".phone");
     var country = $('#CountryIso').length && $('#CountryIso').val() ? $('#CountryIso').val() : 'in';

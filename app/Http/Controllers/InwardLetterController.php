@@ -29,7 +29,7 @@ class InwardLetterController extends Controller
                 ->orWhere('outward_no', 'like', "%{$search}%")
                 ->orWhere('letter_no', 'like', "%{$search}%");
         }
-        foreach (['subject_id', 'department_id', 'branch_id', 'status'] as $field) {
+        foreach (['subject_id', 'department_id', 'branch_id', 'status', 'letter_type'] as $field) {
             if ($value = $request->input($field)) {
                 $query->where($field, $value);
             }
@@ -253,9 +253,10 @@ class InwardLetterController extends Controller
         return response()->json(['html' => $view]);
     }
 
-    public function GetCommentModel($id)
+    public function GetCommentModel(Request $request, $id)
     {
-        $view = view('components.add-comment-model', compact('id'))->render();
+        $type = $request->type ?? 'letter';
+        $view = view('components.add-comment-model', compact('id', 'type'))->render();
         return response()->json(['html' => $view]);
     }
 
@@ -307,9 +308,10 @@ class InwardLetterController extends Controller
         }
     }
 
-    public function GetFollowupModel($id)
+    public function GetFollowupModel(Request $request, $id)
     {
-        $view = view('components.add-followup-model', compact('id'))->render();
+        $type = $request->type ?? 'letter';
+        $view = view('components.add-followup-model', compact('id', 'type'))->render();
         return response()->json(['html' => $view]);
     }
 

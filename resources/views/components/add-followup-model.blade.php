@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="modal-body px-5 my-7">
-            <form class="form FormClass ajax-form-submit" action="{{ route('AddFollowup') }}"
+            <form class="form FormClass ajax-form-submit" action="{{ $type == 'case' ? route('AddCaseFollowup') : route('AddFollowup') }}"
                 enctype="multipart/form-data" method="POST" data-dismiss-modal="FollowupModel" data-preloader="false"
                 data-refresh="false">
                 @csrf

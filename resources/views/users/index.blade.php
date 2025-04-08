@@ -51,9 +51,9 @@
                                                 <button type="reset"
                                                     class="btn btn-light btn-active-light-primary fw-semibold me-2 px-6"
                                                     data-kt-menu-dismiss="true"
-                                                    data-kt-user-table-filter="reset">Reset</button>
+                                                    data-kt-user-table-filter="reset">{{ __('labels.reset') }}</button>
                                                 <button type="submit" class="btn btn-primary fw-semibold px-6"
-                                                    data-kt-menu-dismiss="true">Apply</button>
+                                                    data-kt-menu-dismiss="true">{{ __('labels.apply') }}</button>
                                             </div>
                                             <!--end::Actions-->
                                         </div>

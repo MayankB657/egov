@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="modal-body px-5 my-7">
-            <form class="form FormClass ajax-form-submit" action="{{ route('AddLetterComment') }}" enctype="multipart/form-data"
+            <form class="form FormClass ajax-form-submit" action="{{ $type == 'case' ? route('AddCaseComment') : route('AddLetterComment') }}" enctype="multipart/form-data"
                 method="POST" data-dismiss-modal="CommentModel" data-preloader="false"
                 data-refresh="false">
                 @csrf

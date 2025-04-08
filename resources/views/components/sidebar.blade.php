@@ -13,32 +13,29 @@
                     <a class="menu-link {{ Route::is('dashboard*') ? 'active' : '' }}"
                         href="{{ route('dashboard.index') }}">
                         <span class="menu-icon">
-                            <i class="bi bi-microsoft fs-4"></i>
+                            <i class="bi bi-microsoft fs-2"></i>
                         </span>
                         <span class="menu-title">{{ __('labels.dashboard') }}</span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start"
-                    class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention">
-                    <span
-                        class="menu-link {{ Route::is('inward-letter*') || Route::is('outward-letter*') ? 'active' : '' }}"
-                        onclick="redirectToIndex('inward-letter')">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Route::is('inward-letter*') || Route::is('outward-letter*') ? 'show' : '' }}">
+                    <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="bi bi-envelope-fill fs-2"></i>
+                            <i class="bi bi-arrow-down-up fs-2"></i>
                         </span>
-                        <span class="menu-title">Inward / Outward Management</span>
-                        <span class="menu-arrow"><i class="bi bi-chevron-right fs-9 text-light"></i></span>
+                        <span class="menu-title">{{ __('labels.inward_outward_management') }}</span>
+                        <span class="menu-arrow"></span>
                     </span>
-                    <div
-                        class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-2 py-4 w-200px mh-75 overflow-auto">
+                    <div class="menu-sub menu-sub-accordion">
                         @can('inward-letter.index')
                             <div class="menu-item">
                                 <a class="menu-link {{ Route::is('inward-letter.index') ? 'active' : '' }}"
                                     href="{{ route('inward-letter.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-envelope-arrow-down fs-3"></i>
+                                        <i class="bi bi-envelope-fill fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Inward Letter</span>
+                                    <span class="menu-title">{{ __('labels.inward_letter') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -47,9 +44,9 @@
                                 <a class="menu-link {{ Route::is('inward-letter.create') ? 'active' : '' }}"
                                     href="{{ route('inward-letter.create') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-envelope-plus fs-3"></i>
+                                        <i class="bi bi-envelope-plus fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Add Inward Letter</span>
+                                    <span class="menu-title">{{ __('labels.add_inward_letter') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -58,9 +55,9 @@
                                 <a class="menu-link {{ Route::is('outward-letter.index') ? 'active' : '' }}"
                                     href="{{ route('outward-letter.index') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-envelope-arrow-up fs-3"></i>
+                                        <i class="bi bi-envelope-fill fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Outward Letter</span>
+                                    <span class="menu-title">{{ __('labels.outward_letter') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -69,16 +66,50 @@
                                 <a class="menu-link {{ Route::is('outward-letter.create') ? 'active' : '' }}"
                                     href="{{ route('outward-letter.create') }}">
                                     <span class="menu-icon">
-                                        <i class="bi bi-envelope-plus fs-3"></i>
+                                        <i class="bi bi-envelope-plus fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Add Outward Letter</span>
+                                    <span class="menu-title">{{ __('labels.add_outward_letter') }}</span>
                                 </a>
                             </div>
                         @endcan
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click"
-                    class="menu-item here menu-accordion {{ Route::is('role-permission*') ||
+                    class="menu-item menu-accordion {{ Route::is('case*') ? 'show' : '' }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="bi bi-journal fs-2"></i>
+                        </span>
+                        <span class="menu-title">{{ __('labels.case_management') }}</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        @can('case.index')
+                            <div class="menu-item">
+                                <a class="menu-link {{ Route::is('case.index') ? 'active' : '' }}"
+                                    href="{{ route('case.index') }}">
+                                    <span class="menu-icon">
+                                        <i class="bi bi-journal-text fs-4"></i>
+                                    </span>
+                                    <span class="menu-title">{{ __('labels.case') }}</span>
+                                </a>
+                            </div>
+                        @endcan
+                        @can('case.create')
+                            <div class="menu-item">
+                                <a class="menu-link {{ Route::is('case.create') ? 'active' : '' }}"
+                                    href="{{ route('case.create') }}">
+                                    <span class="menu-icon">
+                                        <i class="bi bi-journal-plus fs-4"></i>
+                                    </span>
+                                    <span class="menu-title">{{ __('labels.add_case') }}</span>
+                                </a>
+                            </div>
+                        @endcan
+                    </div>
+                </div>
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ Route::is('role-permission*') ||
                     Route::is('users*') ||
                     Route::is('branch*') ||
                     Route::is('subject*') ||
@@ -90,7 +121,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-gear-fill fs-2"></i>
                         </span>
-                        <span class="menu-title">Settings</span>
+                        <span class="menu-title">{{ __('labels.settings') }}</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -106,8 +137,9 @@
                                     <span class="menu-icon">
                                         <i class="bi bi-people-fill fs-2"></i>
                                     </span>
-                                    <span class="menu-title">Users</span>
-                                    <span class="menu-arrow"><i class="bi bi-chevron-right fs-9 text-light"></i></span>
+                                    <span class="menu-title">{{ __('labels.users') }}</span>
+                                    <span class="menu-arrow"><i
+                                            class="bi bi-chevron-right fs-9 text-light"></i></span>
                                 </span>
                                 <div
                                     class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-2 py-4 w-200px mh-75 overflow-auto">
@@ -118,7 +150,7 @@
                                                 <span class="menu-icon">
                                                     <i class="bi bi-person-lines-fill fs-3"></i>
                                                 </span>
-                                                <span class="menu-title">List</span>
+                                                <span class="menu-title">{{ __('labels.list') }}</span>
                                             </a>
                                         </div>
                                     @endcan
@@ -129,7 +161,7 @@
                                                 <span class="menu-icon">
                                                     <i class="bi bi-person-heart fs-3"></i>
                                                 </span>
-                                                <span class="menu-title">Roles</span>
+                                                <span class="menu-title">{{ __('labels.roles') }}</span>
                                             </a>
                                         </div>
                                     @endcan
@@ -140,7 +172,7 @@
                                                 <span class="menu-icon">
                                                     <i class="bi bi-person-fill-gear fs-3"></i>
                                                 </span>
-                                                <span class="menu-title">Permissions</span>
+                                                <span class="menu-title">{{ __('labels.permissions') }}</span>
                                             </a>
                                         </div>
                                     @endcan
@@ -154,7 +186,7 @@
                                     <span class="menu-icon">
                                         <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Department</span>
+                                    <span class="menu-title">{{ __('labels.department') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -165,7 +197,7 @@
                                     <span class="menu-icon">
                                         <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Branch</span>
+                                    <span class="menu-title">{{ __('labels.branch') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -176,7 +208,7 @@
                                     <span class="menu-icon">
                                         <i class="bi bi-list-columns-reverse fs-4"></i>
                                     </span>
-                                    <span class="menu-title">Subject</span>
+                                    <span class="menu-title">{{ __('labels.subject') }}</span>
                                 </a>
                             </div>
                         @endcan
@@ -254,12 +286,14 @@
                             </div>
                             <div class="separator my-2"></div>
                             <div class="menu-item px-5">
-                                <a href="{{ route('profile.index') }}" class="menu-link px-5">My Profile</a>
+                                <a href="{{ route('profile.index') }}"
+                                    class="menu-link px-5">{{ __('labels.my_profile') }}</a>
                             </div>
                             <div class="menu-item px-5">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn menu-link px-5">Sign Out</button>
+                                    <button type="submit"
+                                        class="btn menu-link px-5">{{ __('labels.sign_out') }}</button>
                                 </form>
                             </div>
                         </div>

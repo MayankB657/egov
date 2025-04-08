@@ -15,6 +15,7 @@ use App\Http\Controllers\{
     RolePermissionController,
     SiteSettingController,
     SubjectController,
+    CaseController,
     UsersController
 };
 use Illuminate\Support\Facades\{Artisan, Route};
@@ -43,6 +44,7 @@ Route::middleware(['user.auth', 'permission', 'lastactivity'])->group(static fun
     Route::resource('subject', SubjectController::class);
     Route::resource('inward-letter', InwardLetterController::class);
     Route::resource('outward-letter', OutwardLetterController::class);
+    Route::resource('case', CaseController::class);
 });
 
 Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
@@ -54,11 +56,14 @@ Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
     Route::post('add-subject', [SubjectController::class, 'AddSubject'])->name('AddSubject');
     Route::post('add-department', [DepartmentController::class, 'AddDepartment'])->name('AddDepartment');
     Route::post('add-branch', [BranchController::class, 'AddBranch'])->name('AddBranch');
+    Route::get('get-case-activity/{id}', [CaseController::class, 'GetCaseActivity']);
     Route::get('get-letter-activity/{id}', [InwardLetterController::class, 'GetLetterActivity']);
     Route::get('get-comment-model/{id}', [InwardLetterController::class, 'GetCommentModel']);
     Route::post('add-letter-comment', [InwardLetterController::class, 'AddLetterComment'])->name('AddLetterComment');
+    Route::post('add-case-comment', [CaseController::class, 'AddCaseComment'])->name('AddCaseComment');
     Route::get('get-followup-model/{id}', [InwardLetterController::class, 'GetFollowupModel']);
     Route::post('add-followup', [InwardLetterController::class, 'AddFollowup'])->name('AddFollowup');
+    Route::post('add-case-followup', [CaseController::class, 'AddCaseFollowup'])->name('AddCaseFollowup');
     Route::get('get-outward-content/{id}', [OutwardLetterController::class, 'GetOutwardContent']);
     Route::get('remove-file/{id}', [InwardLetterController::class, 'RemoveFile'])->name('RemoveFile');
     Route::get('change-language/{lang}', [UsersController::class, 'ChangeLanguage'])->name('ChangeLanguage');

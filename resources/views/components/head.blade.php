@@ -21,6 +21,7 @@
     <link href="{{ url('/') }}/public/css/style.css" rel="stylesheet" type="text/css" />
     <script>
         const base_url = "{{ url('/') }}";
+        const lang = "{{ $user->language }}"
     </script>
     <style>
         body {
