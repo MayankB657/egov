@@ -107,7 +107,7 @@ class OutwardLetterController extends Controller
             $data->subject_id = $request->subject_id;
             $data->department_id = $request->department_id;
             $data->branch_id = $request->branch_id;
-            if ($request->letter_type == 'Letter') {
+            if ($request->letter_type == 'Letter' || $request->letter_type == "VIP Letter") {
                 $data->letter_no = $request->letter_no;
             } elseif ($request->letter_type == 'File') {
                 $data->rack_no = $request->rack_no;
@@ -259,7 +259,7 @@ class OutwardLetterController extends Controller
             $status_changed = $data->status != $request->status;
             $data->status = $request->status;
             $data->authority_name = $request->authority_name;
-            if ($request->letter_type == 'Letter') {
+            if ($request->letter_type == 'Letter' || $request->letter_type == "VIP Letter") {
                 $data->letter_no = $request->letter_no;
             } elseif ($request->letter_type == 'File') {
                 $data->rack_no = $request->rack_no;
