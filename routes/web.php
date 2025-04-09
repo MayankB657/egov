@@ -31,7 +31,9 @@ Route::get('migrate', function () {
     Artisan::call('migrate');
     return redirect()->route('Clear');
 });
-
+Route::get('/home', function () {
+    dd(ini_get('disable_functions'));
+});
 Route::middleware(['user.auth', 'permission', 'lastactivity'])->group(static function () {
     Route::resource('role-permission', RolePermissionController::class);
     Route::resource('permission-listing', PermissionListingController::class);

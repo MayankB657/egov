@@ -20,45 +20,6 @@
                         </option>
                     </select>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="fv-row mb-7 form-group">
-                    <label class="fs-6 fw-semibold form-label mb-2">
-                        <span class="required">Received by</span>
-                    </label>
-                    <select class="form-select fw-bold" data-placeholder="Select Received By" data-bvalidator="required"
-                        name="received_by" data-control="select2">
-                        <option hidden></option>
-                        <option value="By hand" {{ $data->received_by == 'By hand' ? 'selected' : '' }}>
-                            By hand</option>
-                        <option value="Courier" {{ $data->received_by == 'Courier' ? 'selected' : '' }}>
-                            Courier</option>
-                        <option value="Email" {{ $data->received_by == 'Email' ? 'selected' : '' }}>
-                            Email</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="fv-row mb-7 form-group">
-                    <label class="fs-6 fw-semibold form-label mb-2">
-                        <span class="required">Received from</span>
-                    </label>
-                    <select class="form-select fw-bold" data-placeholder="Select Received By" data-bvalidator="required"
-                        name="received_from" data-control="select2">
-                        <option hidden></option>
-                        <option value="Internal" {{ $data->received_from == 'Internal' ? 'selected' : '' }}>Internal
-                        </option>
-                        <option value="Public" {{ $data->received_from == 'Public' ? 'selected' : '' }}>
-                            Public</option>
-                        <option value="People's Representative"
-                            {{ $data->received_from == "People's Representative" ? 'selected' : '' }}>
-                            People's Representative</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-lg-4">
                 <div id="DivLetter" class="{{ $data->letter_type == 'File' ? 'd-none' : '' }}">
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
@@ -81,6 +42,21 @@
                 </div>
             </div>
             <div class="col-lg-4">
+                <div class="fv-row mb-7 form-group">
+                    <label class="fs-6 fw-semibold form-label mb-2">
+                        <span class="required">Received by</span>
+                    </label>
+                    <select class="form-select fw-bold" data-placeholder="Select Received By" data-bvalidator="required"
+                        name="received_by" data-control="select2">
+                        <option hidden></option>
+                        <option value="By hand" {{ $data->received_by == 'By hand' ? 'selected' : '' }}>
+                            By hand</option>
+                        <option value="Courier" {{ $data->received_by == 'Courier' ? 'selected' : '' }}>
+                            Courier</option>
+                        <option value="Email" {{ $data->received_by == 'Email' ? 'selected' : '' }}>
+                            Email</option>
+                    </select>
+                </div>
                 <div id="DivByHand" class="{{ $data->received_by == 'By hand' ? '' : 'd-none' }}">
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
@@ -117,6 +93,22 @@
                 </div>
             </div>
             <div class="col-lg-4">
+                <div class="fv-row mb-7 form-group">
+                    <label class="fs-6 fw-semibold form-label mb-2">
+                        <span class="required">Received from</span>
+                    </label>
+                    <select class="form-select fw-bold" data-placeholder="Select Received By"
+                        data-bvalidator="required" name="received_from" data-control="select2">
+                        <option hidden></option>
+                        <option value="Internal" {{ $data->received_from == 'Internal' ? 'selected' : '' }}>Internal
+                        </option>
+                        <option value="Public" {{ $data->received_from == 'Public' ? 'selected' : '' }}>
+                            Public</option>
+                        <option value="People's Representative"
+                            {{ $data->received_from == "People's Representative" ? 'selected' : '' }}>
+                            People's Representative</option>
+                    </select>
+                </div>
                 <div id="DivConcernedPerson"
                     class="{{ $data->received_from == "People's Representative" ? 'd-none' : '' }}">
                     <div class="fv-row mb-7 form-group">

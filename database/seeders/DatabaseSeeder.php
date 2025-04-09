@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $singlePermissions = [
-            ['name' => 'holiday.import', 'controller' => 'OrganizationHolidaysController', 'roles' => [$adminRole]],
+            // ['name' => 'holiday.import', 'controller' => 'OrganizationHolidaysController', 'roles' => [$adminRole]],
         ];
 
         foreach ($singlePermissions as $single) {

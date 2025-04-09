@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Subject
+        {{ __('labels.subject') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -24,7 +24,7 @@
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                     <span class="path3"></span>
-                                </i>Add Subject
+                                </i>{{ __('labels.add_subject') }}
                             </a>
                         </div>
                     </div>
@@ -33,9 +33,9 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="">Sr.No</th>
-                                        <th class="min-w-125px">Subject</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        <th class="">{{ __('labels.sr_no') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.subject') }}</th>
+                                        <th class="text-end min-w-100px">{{ __('labels.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600 tablebody">

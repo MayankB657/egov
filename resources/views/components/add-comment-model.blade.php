@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-dialog-centered mw-650px">
     <div class="modal-content">
         <div class="modal-header" id="kt_modal_CommentModel_header">
-            <h2 class="fw-bold">Add Comment</h2>
+            <h2 class="fw-bold">{{ __('labels.add_comment') }}</h2>
             <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                 <i class="ki-duotone ki-cross fs-1">
                     <span class="path1"></span>
@@ -21,7 +21,7 @@
                     data-kt-scroll-wrappers="#kt_modal_CommentModel_scroll" data-kt-scroll-offset="300px">
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 required fw-semibold form-label mb-2">
-                            Comment
+                            {{ __('labels.comment') }}
                         </label>
                         <textarea name="comment" data-bvalidator="required" rows="4" class="form-control" placeholder="Enter Comment"></textarea>
                     </div>
@@ -34,13 +34,13 @@
                             data-bvalidator-msg="Please select file of type png, jpg, jpeg or pdf." />
                     </div>
                     <div class="text-center pt-10">
-                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Discard</button>
+                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                         <button type="submit" class="btn btn-success me-10 btn-submit">
                             <span class="indicator-label">
-                                Submit
+                                {{ __('labels.submit') }}
                             </span>
                             <span class="indicator-progress">
-                                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                {{ __('labels.please_wait') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
                     </div>

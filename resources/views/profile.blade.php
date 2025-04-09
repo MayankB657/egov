@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Profile
+        {{ __('labels.profile') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -8,7 +8,7 @@
                 <div class="card mb-5 mb-xl-10">
                     <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse">
                         <div class="card-title m-0">
-                            <h3 class="fw-bold m-0">Profile Details</h3>
+                            <h3 class="fw-bold m-0">{{ __('labels.profile_details') }}</h3>
                         </div>
                     </div>
                     <div id="kt_account_settings_profile_details" class="collapse show">
@@ -18,9 +18,10 @@
                             <input type="hidden" name="type" value="details">
                             <div class="card-body border-top p-9">
                                 <div class="row mb-6">
-                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Avatar</label>
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">{{ __('labels.photo') }}</label>
                                     <div class="col-lg-8">
-                                        <div class="image-input image-input-circle glowing-border" data-kt-image-input="true">
+                                        <div class="image-input image-input-circle glowing-border"
+                                            data-kt-image-input="true">
                                             <div class="image-input-wrapper w-125px h-125px bgi-size-contain bgi-position-center"
                                                 @if ($user->photo != 'public/images/blank.svg') style="background-image: url('{{ url('/') }}/{{ $user->photo }}')" @endif>
                                             </div>
@@ -48,28 +49,30 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                                        <div class="form-text">{{ __('labels.allowed_file_types') }}: png, jpg, jpeg.</div>
                                     </div>
                                 </div>
                                 <div class="row mb-6">
-                                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Name</label>
+                                    <label
+                                        class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.name') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
                                         <input type="text" name="name" class="form-control form-control-lg"
                                             placeholder="Name" data-bvalidator="required" value="{{ $user->name }}" />
                                     </div>
                                 </div>
                                 <div class="row mb-6">
-                                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Address</label>
+                                    <label
+                                        class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.address') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
                                         <textarea name="address" rows="4" class="form-control form-control-lg" placeholder="Address">{{ $user->address }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-6">
-                                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Language</label>
+                                    <label
+                                        class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.language') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
                                         <select class="form-select fw-bold" data-control="select2"
-                                            data-placeholder="Select language" data-bvalidator="required"
-                                            name="language">
+                                            data-placeholder="Select language" data-bvalidator="required" name="language">
                                             <option hidden></option>
                                             @foreach (config('app.languages') ?? [] as $key => $lang)
                                                 <option value="{{ $lang }}"
@@ -83,8 +86,8 @@
                             </div>
                             <div class="card-footer d-flex justify-content-end py-6 px-9">
                                 <button type="reset"
-                                    class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    class="btn btn-light btn-active-light-primary me-2">{{ __('labels.discard') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('labels.save') }}</button>
                             </div>
                         </form>
                     </div>
@@ -92,7 +95,7 @@
                 <div class="card mb-5 mb-xl-10" id="LoginSessions">
                     <div class="card-header border-0">
                         <div class="card-title m-0">
-                            <h3 class="fw-bold m-0">Login Sessions</h3>
+                            <h3 class="fw-bold m-0">{{ __('labels.login_sessions') }}</h3>
                         </div>
                         <div class="card-toolbar">
                             <a href="{{ route('sessions.logoutAll', Auth::id()) }}"
@@ -100,7 +103,7 @@
                                 <i class="ki-duotone ki-entrance-right fs-3">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
-                                </i>Sign out all sessions</a>
+                                </i>{{ __('labels.logout_all') }}</a>
                         </div>
                     </div>
                     <div class="collapse show">
@@ -109,11 +112,11 @@
                                 <table class="table align-middle table-row-dashed gy-5">
                                     <thead class="border-bottom border-gray-200 fs-7 fw-bold">
                                         <tr class="text-start text-muted text-uppercase gs-0">
-                                            <th class="min-w-100px">Location</th>
-                                            <th>Device</th>
-                                            <th>IP Address</th>
-                                            <th class="min-w-125px">Time</th>
-                                            <th class="min-w-70px">Actions</th>
+                                            <th class="min-w-100px">{{ __('labels.location') }}</th>
+                                            <th>{{ __('labels.device') }}</th>
+                                            <th>{{ __('labels.ip_address') }}</th>
+                                            <th class="min-w-125px">{{ __('labels.time') }}</th>
+                                            <th class="min-w-70px">{{ __('labels.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="fs-6 fw-semibold text-gray-600">
@@ -125,11 +128,11 @@
                                                 <td>{{ $session->last_activity }}</td>
                                                 <td>
                                                     @if ($session->id === session()->getId())
-                                                        <span class="badge bg-primary">Current
-                                                            session</span>
+                                                        <span
+                                                            class="badge bg-primary">{{ __('labels.current_session') }}</span>
                                                     @else
                                                         <a href="{{ route('sessions.logout', $session->id) }}"
-                                                            class="btn btn-sm btn-danger">Sign out</a>
+                                                            class="btn btn-sm btn-danger">{{ __('labels.sign_out') }}</a>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -144,14 +147,14 @@
                     <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
                         data-bs-target="#kt_account_signin_method">
                         <div class="card-title m-0">
-                            <h3 class="fw-bold m-0">Sign-in Method</h3>
+                            <h3 class="fw-bold m-0">{{ __('labels.signin_method') }}</h3>
                         </div>
                     </div>
                     <div class="collapse show">
                         <div class="card-body border-top p-9">
                             <div class="d-flex flex-wrap align-items-center">
                                 <div id="kt_signin_email">
-                                    <div class="fs-6 fw-bold mb-1">Email Address</div>
+                                    <div class="fs-6 fw-bold mb-1">{{ __('labels.email') }}</div>
                                     <div class="fw-semibold text-gray-600">{{ $user->email }}</div>
                                 </div>
                                 <div id="kt_signin_email_edit" class="flex-row-fluid d-none">
@@ -161,8 +164,8 @@
                                         <div class="row mb-6">
                                             <div class="col-lg-6 mb-4 mb-lg-0">
                                                 <div class="fv-row mb-0">
-                                                    <label for="emailaddress" class="form-label fs-6 fw-bold mb-3">Enter
-                                                        New Email Address</label>
+                                                    <label for="emailaddress"
+                                                        class="form-label fs-6 fw-bold mb-3">{{ __('labels.new_email') }}</label>
                                                     <input type="email" class="form-control form-control-lg"
                                                         id="emailaddress" placeholder="Email Address" name="email"
                                                         value="{{ $user->email }}" />
@@ -171,7 +174,7 @@
                                             <div class="col-lg-6">
                                                 <div class="fv-row mb-0 form-group">
                                                     <label for="confirmemailpassword"
-                                                        class="form-label fs-6 fw-bold mb-3">Confirm Password</label>
+                                                        class="form-label fs-6 fw-bold mb-3">{{ __('labels.confirm_password') }}</label>
                                                     <input type="password" class="form-control form-control-lg"
                                                         data-bvalidator="required" name="confirmemailpassword"
                                                         id="confirmemailpassword" />
@@ -180,20 +183,21 @@
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <button id="kt_signin_cancel" type="reset"
-                                                class="btn btn-color-gray-500 btn-active-light-primary me-2 px-6">Cancel</button>
-                                            <button type="submit" class="btn btn-primary px-6">Update Email</button>
+                                                class="btn btn-color-gray-500 btn-active-light-primary me-2 px-6">{{ __('labels.discard') }}</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-6">{{ __('labels.save') }}</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div id="kt_signin_email_button" class="ms-auto">
-                                    <button class="btn btn-light btn-active-light-primary">Change
-                                        Email</button>
+                                    <button
+                                        class="btn btn-light btn-active-light-primary">{{ __('labels.change_email') }}</button>
                                 </div>
                             </div>
                             <div class="separator separator-dashed my-6"></div>
                             <div class="d-flex flex-wrap align-items-center mb-10">
                                 <div id="kt_signin_password">
-                                    <div class="fs-6 fw-bold mb-1">Password</div>
+                                    <div class="fs-6 fw-bold mb-1">{{ __('labels.password') }}</div>
                                     <div class="fw-semibold text-gray-600">************</div>
                                 </div>
                                 <div id="kt_signin_password_edit" class="flex-row-fluid d-none">
@@ -204,8 +208,7 @@
                                             <div class="col-lg-4">
                                                 <div class="fv-row mb-0 form-group">
                                                     <label for="currentpassword"
-                                                        class="form-label required fs-6 fw-bold mb-3">Current
-                                                        Password</label>
+                                                        class="form-label required fs-6 fw-bold mb-3">{{ __('labels.current_password') }}</label>
                                                     <input type="password" class="form-control form-control-lg"
                                                         name="currentpassword" data-bvalidator="required"
                                                         id="currentpassword" />
@@ -214,8 +217,7 @@
                                             <div class="col-lg-4">
                                                 <div class="fv-row mb-0 form-group">
                                                     <label for="newpassword"
-                                                        class="form-label required fs-6 fw-bold mb-3">New
-                                                        Password</label>
+                                                        class="form-label required fs-6 fw-bold mb-3">{{ __('labels.new_password') }}</label>
                                                     <input type="password" class="form-control form-control-lg"
                                                         name="newpassword" data-bvalidator="required,passwordFormat"
                                                         id="newpassword" />
@@ -224,8 +226,7 @@
                                             <div class="col-lg-4">
                                                 <div class="fv-row mb-0 form-group">
                                                     <label for="confirmpassword"
-                                                        class="form-label required fs-6 fw-bold mb-3">Confirm New
-                                                        Password</label>
+                                                        class="form-label required fs-6 fw-bold mb-3">{{ __('labels.confirm_password') }}</label>
                                                     <input type="password" class="form-control form-control-lg"
                                                         name="confirmpassword"
                                                         data-bvalidator="required,equal[newpassword]"
@@ -233,19 +234,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-text mb-5">Password must be at least 8 character
-                                            and contain number, a-z, A-Z.</div>
+                                        <div class="form-text mb-5">{{ __('labels.password_requirements') }}</div>
                                         <div class="d-flex justify-content-end">
                                             <button id="kt_password_cancel" type="button"
-                                                class="btn btn-color-gray-500 btn-active-light-primary me-2 px-6">Cancel</button>
-                                            <button type="submit" class="btn btn-primary px-6">Update
-                                                Password</button>
+                                                class="btn btn-color-gray-500 btn-active-light-primary me-2 px-6">{{ __('labels.discard') }}</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-6">{{ __('labels.save') }}</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div id="kt_signin_password_button" class="ms-auto">
                                     <button class="btn btn-light btn-active-light-primary">{{ __('labels.reset') }}
-                                        Password</button>
+                                        {{ __('labels.password') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                         data-bs-target="#kt_account_deactivate" aria-expanded="true"
                         aria-controls="kt_account_deactivate">
                         <div class="card-title m-0">
-                            <h3 class="fw-bold m-0">Delete Account</h3>
+                            <h3 class="fw-bold m-0">{{ __('labels.delete_account') }}</h3>
                         </div>
                     </div>
                     <div id="kt_account_settings_deactivate" class="collapse show">
@@ -268,13 +268,13 @@
                                 <div class="form-check form-check-solid fv-row">
                                     <input name="deactivate" class="form-check-input" type="checkbox" value=""
                                         id="deactivate" />
-                                    <label class="form-check-label fw-semibold ps-2 fs-6" for="deactivate">I
-                                        confirm my account delete</label>
+                                    <label class="form-check-label fw-semibold ps-2 fs-6"
+                                        for="deactivate">{{ __('labels.i_confirm_to_delete_my_account') }}</label>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-end py-6 px-9">
                                 <button id="kt_account_deactivate_account_submit" type="submit"
-                                    class="btn btn-danger fw-semibold">Deactivate Account</button>
+                                    class="btn btn-danger fw-semibold">{{ __('labels.delete_account') }}</button>
                             </div>
                         </form>
                     </div>

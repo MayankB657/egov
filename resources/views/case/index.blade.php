@@ -65,10 +65,10 @@
                                         <select class="form-select fw-bold" data-placeholder="Select Branch"
                                             data-bvalidator="required" name="status" data-control="select2">
                                             <option hidden></option>
-                                            <option value="Received">Received</option>
-                                            <option value="In Process">In Process</option>
-                                            <option value="Rejected">Rejected</option>
-                                            <option value="Signed">Signed</option>
+                                            <option value="Received">{{ __('labels.received') }}</option>
+                                            <option value="In Process">{{ __('labels.in_process') }}</option>
+                                            <option value="Rejected">{{ __('labels.rejected') }}</option>
+                                            <option value="Signed">{{ __('labels.signed') }}</option>
                                         </select>
                                     </div>
                                 </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Users
+        {{ __('labels.users') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -34,7 +34,7 @@
                                     <form action="{{ route('users.index') }}" method="GET">
                                         <div class="px-7 py-5">
                                             <div class="mb-10">
-                                                <label class="form-label fs-6 fw-semibold">Role:</label>
+                                                <label class="form-label fs-6 fw-semibold">{{ __('labels.role') }}:</label>
                                                 <select class="form-select fw-bold" name="filter_role"
                                                     data-kt-select2="true" data-placeholder="Select role"
                                                     data-allow-clear="true" data-hide-search="true">
@@ -62,14 +62,14 @@
                                 @can('users.create')
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#add_user">
-                                        <i class="ki-duotone ki-plus fs-2"></i>Add User</button>
+                                        <i class="ki-duotone ki-plus fs-2"></i>{{ __('labels.add_user') }}</button>
                                 @endcan
                             </div>
                             <div class="modal fade" id="add_user" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered mw-650px">
                                     <div class="modal-content">
                                         <div class="modal-header" id="kt_modal_add_user_header">
-                                            <h2 class="fw-bold">Add User</h2>
+                                            <h2 class="fw-bold">{{ __('labels.add_user') }}</h2>
                                             <div class="btn btn-icon btn-sm btn-active-icon-primary"
                                                 data-bs-dismiss="modal">
                                                 <i class="ki-duotone ki-cross fs-1">
@@ -92,7 +92,7 @@
                                                     data-kt-scroll-offset="300px">
                                                     <div class="row mb-6 mt-5">
                                                         <label
-                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Avatar</label>
+                                                            class="col-lg-4 col-form-label fw-semibold fs-6">{{ __('labels.photo') }}</label>
                                                         <div class="col-lg-8">
                                                             <div class="image-input image-input-circle"
                                                                 data-kt-image-input="true">
@@ -115,19 +115,21 @@
                                                                     <i class="bi bi-x fs-2"></i>
                                                                 </span>
                                                             </div>
-                                                            <div class="form-text">Allowed file types: png, jpg, jpeg.
+                                                            <div class="form-text">{{ __('labels.allowed_file_types') }}:
+                                                                png, jpg, jpeg.
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
-                                                        <label class="required fw-semibold fs-6 mb-2">Full
-                                                            Name</label>
+                                                        <label
+                                                            class="required fw-semibold fs-6 mb-2">{{ __('labels.name') }}</label>
                                                         <input type="text" name="name"
                                                             class="form-control mb-3 mb-lg-0" placeholder="Enter name"
                                                             data-bvalidator="required" />
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
-                                                        <label class="required fw-semibold fs-6 mb-2">Email</label>
+                                                        <label
+                                                            class="required fw-semibold fs-6 mb-2">{{ __('labels.email') }}</label>
                                                         <input type="email" name="email"
                                                             class="form-control mb-3 mb-lg-0"
                                                             placeholder="example@domain.com"
@@ -136,7 +138,7 @@
                                                     </div>
                                                     <div class="fv-row mb-2 form-group" data-kt-password-meter="true">
                                                         <label
-                                                            class="form-label required fs-6 fw-bold mb-2">Password</label>
+                                                            class="form-label required fs-6 fw-bold mb-2">{{ __('labels.password') }}</label>
 
                                                         <div class="position-relative mb-3">
                                                             <input class="form-control form-control-lg" type="password"
@@ -165,14 +167,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-text mb-5">Password must be at least 8 character
-                                                        and contain number, a-z, A-Z.</div>
+                                                    <div class="form-text mb-5">{{ __('labels.password_requirements') }}
+                                                    </div>
                                                     <div class="fv-row mb-7 form-group">
-                                                        <label class="fw-semibold fs-6 mb-2">Address</label>
+                                                        <label
+                                                            class="fw-semibold fs-6 mb-2">{{ __('labels.address') }}</label>
                                                         <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0" placeholder="Enter address"></textarea>
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
-                                                        <label class="required fw-semibold fs-6 mb-2">Language</label>
+                                                        <label
+                                                            class="required fw-semibold fs-6 mb-2">{{ __('labels.language') }}</label>
                                                         <div class="d-flex fv-row">
                                                             <select class="form-select fw-bold" data-control="select2"
                                                                 data-dropdown-parent="body" data-hide-search="true"
@@ -188,7 +192,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
-                                                        <label class="required fw-semibold fs-6 mb-2">Role</label>
+                                                        <label
+                                                            class="required fw-semibold fs-6 mb-2">{{ __('labels.role') }}</label>
                                                         <div class="d-flex fv-row">
                                                             <select class="form-select fw-bold"
                                                                 data-placeholder="Select role" data-bvalidator="required"
@@ -196,7 +201,8 @@
                                                                 data-hide-search="true" name="role">
                                                                 <option></option>
                                                                 @foreach ($RoleList as $role)
-                                                                    <option value="{{ $role->id }}">{{ $role->name }}
+                                                                    <option value="{{ $role->id }}">
+                                                                        {{ $role->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -205,13 +211,13 @@
                                                 </div>
                                                 <div class="text-center pt-10">
                                                     <button type="reset" class="btn btn-light me-3"
-                                                        data-bs-dismiss="modal">Discard</button>
+                                                        data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                                                     <button type="submit" class="btn btn-success me-10 btn-submit">
                                                         <span class="indicator-label">
-                                                            Submit
+                                                            {{ __('labels.submit') }}
                                                         </span>
                                                         <span class="indicator-progress">
-                                                            Please wait... <span
+                                                            {{ __('labels.please_wait') }} <span
                                                                 class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                                         </span>
                                                     </button>
@@ -230,13 +236,13 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5">
                                 <thead>
                                     <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="">Sr No</th>
-                                        <th class="min-w-125px">User</th>
-                                        <th class="min-w-125px">Role</th>
-                                        <th class="min-w-125px">Last login</th>
-                                        <th class="min-w-125px">Two-step</th>
-                                        <th class="min-w-125px">Joined Date</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        <th class="">{{ __('labels.sr_no') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.user') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.role') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.last_login') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.two_factor') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.joined_date') }}</th>
+                                        <th class="text-end min-w-100px">{{ __('labels.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-gray-600 fw-semibold tablebody">

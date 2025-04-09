@@ -34,6 +34,9 @@
             <div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
                 <div class="d-flex align-items-center">
                     <div class="app-navbar-item ms-1 ms-md-4">
+                        <div id="google_translate_element"></div>
+                    </div>
+                    <div class="app-navbar-item ms-1 ms-md-4">
                         <div class="btn btn-icon btn-custom btn-active-color-primary w-35px h-35px position-relative"
                             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                             data-kt-menu-placement="bottom-end" id="kt_menu_item_wow">
@@ -50,15 +53,15 @@
                         <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true"
                             id="kt_menu_notifications">
                             <div class="d-flex flex-stack rounded-top px-9 border-bottom border-2 border-primary">
-                                <h3 class="fw-semibold mt-5">Notifications
+                                <h3 class="fw-semibold mt-5">{{ __('labels.notifications') }}
                                     @if ($user->unreadNotifications->count() > 0)
                                         <span
                                             class="opacity-75 badge badge-sm fs-8 badge-circle badge-outline badge-success badgeCounter">{{ $user->unreadNotifications->count() }}</span>
                                     @endif
                                 </h3>
                                 @if ($user->unreadNotifications->count() > 0)
-                                    <a class="mt-5" href="{{ route('MarkAllRead') }}" id="MarkAllRead">Mark all
-                                        read</a>
+                                    <a class="mt-5" href="{{ route('MarkAllRead') }}"
+                                        id="MarkAllRead">{{ __('labels.mark_all_as_read') }}</a>
                                 @endif
                             </div>
                             <div class="tab-content">
@@ -134,7 +137,7 @@
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="bi bi-sun-fill fs-2"></i>
                                 </span>
-                                <span class="menu-title">Light</span>
+                                <span class="menu-title">{{ __('labels.light') }}</span>
                             </a>
                         </div>
                         <div class="menu-item px-3 my-0">
@@ -142,15 +145,16 @@
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="bi bi-moon-fill fs-2"></i>
                                 </span>
-                                <span class="menu-title">Dark</span>
+                                <span class="menu-title">{{ __('labels.dark') }}</span>
                             </a>
                         </div>
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="system">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
+                                data-kt-value="system">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="bi bi-display fs-2"></i>
                                 </span>
-                                <span class="menu-title">System</span>
+                                <span class="menu-title">{{ __('labels.system') }}</span>
                             </a>
                         </div>
                     </div>

@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ url('/') }}/public/images/favicon-16x16.png" />
-    <link rel="shortcut" href="{{ url('/') }}/public/images/favicon-32x32.png" />
+    <link rel="icon" href="{{ url('/') }}/public/images/favicon-32x32.png" />
     <link href="{{ url('/') }}/public/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/mbiconstyle.css" rel="stylesheet" type="text/css" />
+    <script>
+        const lang = "en";
+    </script>
 </head>
 <style>
     body {

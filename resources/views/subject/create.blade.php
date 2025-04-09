@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Subject
+        {{ __('labels.subject') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -13,14 +13,14 @@
                         <div class="card-body">
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Name</span>
+                                    <span class="required">{{ __('labels.name') }}</span>
                                 </label>
                                 <input class="form-control" name="name" placeholder="Enter Name"
                                     data-bvalidator="required" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Department</span>
+                                    <span class="required">{{ __('labels.department') }}</span>
                                 </label>
                                 <select class="form-select fw-bold" data-placeholder="Select Department"
                                     data-bvalidator="required" name="department_id" data-control="select2">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Branch</span>
+                                    <span class="required">{{ __('labels.branch') }}</span>
                                 </label>
                                 <select class="form-select fw-bold" data-placeholder="Select Branch"
                                     data-bvalidator="required" name="branch_id" data-control="select2">
@@ -42,9 +42,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="text-end">
-                                <a href="{{ route('subject.index') }}" class="btn btn-light me-3">Discard</a>
+                                <a href="{{ route('subject.index') }}"
+                                    class="btn btn-light me-3">{{ __('labels.discard') }}</a>
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    {{ __('labels.submit') }}
                                 </button>
                             </div>
                         </div>
@@ -61,7 +62,8 @@
                 branch_id.empty();
                 branch_id.append('<option hidden></option>');
                 $.ajax({
-                    url: "{{ route('getBranches', ['department_id' => '__ID__']) }}".replace('__ID__', department_id),
+                    url: "{{ route('getBranches', ['department_id' => '__ID__']) }}".replace('__ID__',
+                        department_id),
                     type: "GET",
                     success: function(data) {
                         $.each(data.branches, function(key, value) {

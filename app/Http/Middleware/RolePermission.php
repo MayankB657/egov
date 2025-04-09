@@ -12,7 +12,6 @@ class RolePermission
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            $User = Auth::user();
             if (Auth::user()->can($request->route()->getName())) {
                 return $next($request);
             } else {

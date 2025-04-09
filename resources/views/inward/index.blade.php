@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Inward Letter List
+        {{ __('labels.inward_letter') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -12,7 +12,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Subject
+                                            {{ __('labels.subject') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Subject"
                                             data-bvalidator="required" name="subject_id" data-control="select2">
@@ -28,7 +28,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Department
+                                            {{ __('labels.department') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Department"
                                             data-bvalidator="required" name="department_id" data-control="select2">
@@ -44,7 +44,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Branch
+                                            {{ __('labels.branch') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Branch"
                                             data-bvalidator="required" name="branch_id" data-control="select2">
@@ -60,19 +60,22 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Status
+                                            {{ __('labels.status') }}
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Branch"
                                             data-bvalidator="required" name="status" data-control="select2">
                                             <option hidden></option>
-                                            <option value="Received" {{ request('status') == 'Received' ? 'selected' : '' }}>
-                                                Received</option>
-                                            <option value="In Process" {{ request('status') == 'In Process' ? 'selected' : '' }}>In
-                                                Process</option>
-                                            <option value="Rejected" {{ request('status') == 'Rejected' ? 'selected' : '' }}>
-                                                Rejected</option>
-                                            <option value="Signed" {{ request('status') == 'Signed' ? 'selected' : '' }}>Signed
-                                            </option>
+                                            <option value="Received"
+                                                {{ request('status') == 'Received' ? 'selected' : '' }}>
+                                                {{ __('labels.received') }}</option>
+                                            <option value="In Process"
+                                                {{ request('status') == 'In Process' ? 'selected' : '' }}>
+                                                {{ __('labels.in_process') }}</option>
+                                            <option value="Rejected"
+                                                {{ request('status') == 'Rejected' ? 'selected' : '' }}>
+                                                {{ __('labels.rejected') }}</option>
+                                            <option value="Signed" {{ request('status') == 'Signed' ? 'selected' : '' }}>
+                                                {{ __('labels.signed') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -111,7 +114,7 @@
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                     <span class="path3"></span>
-                                </i>Add Letter
+                                </i>{{ __('labels.add_letter') }}
                             </a>
                         </div>
                     </div>
@@ -120,15 +123,15 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="">Sr.No</th>
-                                        <th class="min-w-125px">Inward Number</th>
-                                        <th class="min-w-125px">Outward Number</th>
-                                        <th class="min-w-125px">Subject</th>
-                                        <th class="min-w-125px">Letter Number</th>
-                                        <th class="min-w-125px">Status</th>
-                                        <th class="min-w-125px">Current Status</th>
-                                        <th class="min-w-125px">Created At</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        <th class="">{{ __('labels.sr_no') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.inward_number') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.outward_number') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.subject') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.letter_number') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.status') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.current_status') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.created_at') }}</th>
+                                        <th class="text-end min-w-100px">{{ __('labels.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600 tablebody">

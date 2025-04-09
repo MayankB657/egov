@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Edit Department
+        {{ __('labels.edit_department') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -14,21 +14,21 @@
                         <div class="card-body">
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Name</span>
+                                    <span class="required">{{ __('labels.name') }}</span>
                                 </label>
                                 <input class="form-control" name="name" placeholder="Enter Name"
                                     data-bvalidator="required" value="{{ $data->name }}" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Email</span>
+                                    <span class="required">{{ __('labels.email') }}</span>
                                 </label>
                                 <input class="form-control" name="email" placeholder="Enter Email"
                                     data-bvalidator="required" value="{{ $data->email }}" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
-                                    <span class="required">Contact</span>
+                                    <span class="required">{{ __('labels.contact') }}</span>
                                 </label>
                                 <input class="form-control" name="contact" placeholder="Enter Contact Number"
                                     data-bvalidator="required" value="{{ $data->contact }}" />
@@ -36,9 +36,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="text-end">
-                                <a href="{{ route('department.index') }}" class="btn btn-light me-3">Discard</a>
+                                <a href="{{ route('department.index') }}"
+                                    class="btn btn-light me-3">{{ __('labels.discard') }}</a>
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    {{ __('labels.submit') }}
                                 </button>
                             </div>
                         </div>

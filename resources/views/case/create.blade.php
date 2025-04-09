@@ -6,9 +6,9 @@
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
                 <div class="card card-flush">
-                    <form action="{{ route('case.store') }}" autocomplete="off" method="POST"
-                        class="form ajax-form-submit" data-preloader="true" data-reset="true" data-refresh="true"
-                        id="FormId" enctype="multipart/form-data">
+                    <form action="{{ route('case.store') }}" autocomplete="off" method="POST" class="form ajax-form-submit"
+                        data-preloader="true" data-reset="true" data-refresh="true" id="FormId"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row mb-1">
@@ -20,44 +20,12 @@
                                         <select class="form-select fw-bold" data-placeholder="Select Type"
                                             data-bvalidator="required" name="letter_type" data-control="select2">
                                             <option hidden></option>
-                                            <option value="Letter">Letter</option>
-                                            <option value="File">File</option>
-                                            <option value="Note">Note</option>
-                                            <option value="VIP Letter">VIP Letter</option>
+                                            <option value="Letter">{{ __('labels.letter') }}</option>
+                                            <option value="File">{{ __('labels.file') }}</option>
+                                            <option value="Note">{{ __('labels.note') }}</option>
+                                            <option value="VIP Letter">{{ __('labels.vip_letter') }}</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="fv-row mb-7 form-group">
-                                        <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">{{ __('labels.received_by') }}</span>
-                                        </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
-                                            data-bvalidator="required" name="received_by" data-control="select2">
-                                            <option hidden></option>
-                                            <option value="By hand">By hand</option>
-                                            <option value="Courier">Courier</option>
-                                            <option value="Email">Email</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="fv-row mb-7 form-group">
-                                        <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">{{ __('labels.received_from') }}</span>
-                                        </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
-                                            data-bvalidator="required" name="received_from" data-control="select2">
-                                            <option hidden></option>
-                                            <option value="Internal">Internal</option>
-                                            <option value="Public">Public</option>
-                                            <option value="People's Representative">People's Representative</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-1">
-                                <div class="col-lg-4">
                                     <div id="DivLetter" class="d-none">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
@@ -80,6 +48,18 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            <span class="required">{{ __('labels.received_by') }}</span>
+                                        </label>
+                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                            data-bvalidator="required" name="received_by" data-control="select2">
+                                            <option hidden></option>
+                                            <option value="By hand">{{ __('labels.by_hand') }}</option>
+                                            <option value="Courier">{{ __('labels.courier') }}</option>
+                                            <option value="Email">{{ __('labels.email') }}</option>
+                                        </select>
+                                    </div>
                                     <div id="DivByHand" class="d-none">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
@@ -103,19 +83,31 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.courier_name') }}</span>
                                             </label>
-                                            <input class="form-control" name="courier_name"
-                                                placeholder="Enter Courier Name" data-bvalidator="required" />
+                                            <input class="form-control" name="courier_name" placeholder="Enter Courier Name"
+                                                data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.tracking_id') }}</span>
                                             </label>
-                                            <input class="form-control" name="tracking_id"
-                                                placeholder="Enter Tracking ID" data-bvalidator="required" />
+                                            <input class="form-control" name="tracking_id" placeholder="Enter Tracking ID"
+                                                data-bvalidator="required" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            <span class="required">{{ __('labels.received_from') }}</span>
+                                        </label>
+                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                            data-bvalidator="required" name="received_from" data-control="select2">
+                                            <option hidden></option>
+                                            <option value="Internal">{{ __('labels.internal') }}</option>
+                                            <option value="Public">{{ __('labels.public') }}</option>
+                                            <option value="People's Representative">{{ __('labels.people_representative') }}</option>
+                                        </select>
+                                    </div>
                                     <div id="DivConcernedPerson" class="d-none">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
@@ -199,10 +191,10 @@
                                         </label>
                                         <select class="form-select fw-bold" data-bvalidator="required" name="status"
                                             data-control="select2">
-                                            <option value="Received" selected>Received</option>
-                                            <option value="In Process">In Process</option>
-                                            <option value="Rejected">Rejected</option>
-                                            <option value="Signed">Signed</option>
+                                            <option value="Received" selected>{{ __('labels.received') }}</option>
+                                            <option value="In Process">{{ __('labels.in_process') }}</option>
+                                            <option value="Rejected">{{ __('labels.rejected') }}</option>
+                                            <option value="Signed">{{ __('labels.signed') }}</option>
                                         </select>
                                     </div>
                                 </div>

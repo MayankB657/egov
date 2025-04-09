@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-dialog-centered mw-650px">
     <div class="modal-content">
         <div class="modal-header" id="kt_modal_FollowupModel_header">
-            <h2 class="fw-bold">Add Follow Up</h2>
+            <h2 class="fw-bold">{{ __('labels.add_followup') }}</h2>
             <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                 <i class="ki-duotone ki-cross fs-1">
                     <span class="path1"></span>
@@ -21,20 +21,20 @@
                     data-kt-scroll-wrappers="#kt_modal_FollowupModel_scroll" data-kt-scroll-offset="300px">
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
-                            <span class="required">Officer Name</span>
+                            <span class="required">{{ __('labels.officer_name') }}</span>
                         </label>
                         <input class="form-control" name="officer_name" placeholder="Enter Name"
                             data-bvalidator="required" />
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
-                            Officer Designation
+                            {{ __('labels.officer_designation') }}
                         </label>
                         <input class="form-control" name="officer_designation" placeholder="Enter Designation" />
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
-                            Remark
+                            {{ __('labels.remark') }}
                         </label>
                         <textarea name="remark" rows="4" class="form-control" placeholder="Enter Remark"></textarea>
                     </div>
@@ -47,13 +47,13 @@
                             data-bvalidator-msg="Please select file of type png, jpg, jpeg or pdf." />
                     </div>
                     <div class="text-center pt-10">
-                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Discard</button>
+                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                         <button type="submit" class="btn btn-success me-10 btn-submit">
                             <span class="indicator-label">
-                                Submit
+                                {{ __('labels.submit') }}
                             </span>
                             <span class="indicator-progress">
-                                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                {{ __('labels.please_wait') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
                     </div>

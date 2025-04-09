@@ -1,6 +1,6 @@
 @if ($data->isEmpty())
     <tr>
-        <td colspan="9" class="text-center text-muted fs-6 fw-bold">No Records Found</td>
+        <td colspan="9" class="text-center text-muted fs-6 fw-bold">{{ __('labels.no_records_found') }}</td>
     </tr>
 @else
     @foreach ($data as $row)
@@ -50,16 +50,6 @@
                     data-bs-toggle="tooltip" data-bs-placement="top" title="Click To Edit">
                     <i class="bi bi-vector-pen fs-3"></i>
                 </a>
-                {{-- <form action="{{ route('inward-letter.destroy', base64UrlEncode($row->id)) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button"
-                        class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm ConfirmDelete"
-                        data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Click To Delete">
-                        <i class="bi bi-trash fs-3"></i>
-                    </button>
-                </form> --}}
             </td>
         </tr>
     @endforeach

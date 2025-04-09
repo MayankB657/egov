@@ -132,7 +132,8 @@
     color-scheme: dark;
     --bs-body-color: #F5F5F5;
     --bs-body-color-rgb: 245, 245, 245;
-    --bs-body-bg: #1e1d1d;/*#15171C; */
+    --bs-body-bg: #1e1d1d;
+    /*#15171C; */
     --bs-body-bg-rgb: 21, 23, 28;
     --bs-emphasis-color: #ffffff;
     --bs-emphasis-color-rgb: 255, 255, 255;
@@ -6416,7 +6417,8 @@ fieldset:disabled .btn {
     --bs-modal-border-color: var(--bs-border-color-translucent);
     --bs-modal-border-width: 0;
     --bs-modal-border-radius: 1rem;
-    --bs-modal-box-shadow: var(--mb-model-shadow);/* 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); */
+    --bs-modal-box-shadow: var(--mb-model-shadow);
+    /* 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); */
     --bs-modal-inner-border-radius: 0.475rem;
     --bs-modal-header-padding-x: 1.75rem;
     --bs-modal-header-padding-y: 1.75rem;
@@ -6566,7 +6568,8 @@ fieldset:disabled .btn {
 @media (min-width:576px) {
     .modal {
         --bs-modal-margin: 1.75rem;
-        --bs-modal-box-shadow: var(--mb-model-shadow);/* 0 0.5rem 1rem rgba(0, 0, 0, 0.1) */
+        --bs-modal-box-shadow: var(--mb-model-shadow);
+        /* 0 0.5rem 1rem rgba(0, 0, 0, 0.1) */
     }
 
     .modal-dialog {
@@ -8870,6 +8873,7 @@ fieldset:disabled .btn {
 .w-90 {
     width: 90% !important
 }
+
 .w-100 {
     width: 100% !important
 }
@@ -59962,6 +59966,11 @@ html {
     font-family: Inter, Helvetica, sans-serif
 }
 
+body.mr {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    font-variant-numeric: traditional;
+}
+
 @media (max-width:991.98px) {
 
     body,
@@ -60708,26 +60717,27 @@ body {
     background-color: var(--bs-footer-bg-color)
 }
 
-.floatmenu{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:25px;
-	right:25px;
-    padding:10px;
-	border-radius:20px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #0800ff;
-    background-color:#000;
+.floatmenu {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #0800ff;
+    background-color: #000;
 }
-[data-bs-theme="dark"] .floatmenu{
+
+[data-bs-theme="dark"] .floatmenu {
     box-shadow: 2px 2px 3px #999;
 }
 
-[data-bs-theme=dark] .bg-dark-1e1d1d{
+[data-bs-theme=dark] .bg-dark-1e1d1d {
     background-color: #1e1d1d;
 }
 
-[data-bs-theme=light] .bg-light-fff{
+[data-bs-theme=light] .bg-light-fff {
     background-color: #fff;
 }

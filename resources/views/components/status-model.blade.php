@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-dialog-centered mw-650px">
     <div class="modal-content">
         <div class="modal-header" id="kt_modal_StatusModel_header">
-            <h2 class="fw-bold">Activity</h2>
+            <h2 class="fw-bold">{{ __('labels.activity') }}</h2>
             <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                 <i class="ki-duotone ki-cross fs-1">
                     <span class="path1"></span>

@@ -12,6 +12,7 @@ use App\Models\TopicLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class CaseController extends Controller
 {
@@ -151,7 +152,86 @@ class CaseController extends Controller
 
     public function update(Request $request, $id)
     {
-        return $request->all();
+        $id = base64UrlDecode($id);
+        try {
+            DB::beginTransaction();
+            $max_size = config('app.max_upload_size');
+            $max_uploads = config('app.max_uploads');
+            $validator = Validator::make($request->all(), [
+                'letter_no' => [
+                    'nullable',
+                    Rule::unique('letter', 'letter_no')->ignore($id),
+                ],
+                'media_files' => "nullable|array|max:$max_uploads",
+                'media_files.*' => "file|mimes:pdf,jpg,jpeg,png|max:$max_size",
+            ], [
+                'letter_no.unique' => 'Letter number already exists.',
+                'media_files.max' => 'You can upload a maximum of ' . $max_uploads . ' files.',
+                'media_files.*.file' => 'Each upload must be a valid file.',
+                'media_files.*.mimes' => 'Allowed file types: pdf, jpg, jpeg, png.',
+                'media_files.*.max' => "Each file must not exceed " . ($max_size / 1024) . "MB.",
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors(), 'status' => false]);
+            }
+            $data = Topic::find($id);
+            $data->topic_type = $request->letter_type;
+            $data->received_by = $request->received_by;
+            $data->received_from = $request->received_from;
+            $data->subject_id = $request->subject_id;
+            $data->department_id = $request->department_id;
+            $data->branch_id = $request->branch_id;
+            $data->description = $request->description;
+            $data->date = $request->date;
+            $data->comment = $request->comment;
+            $status_changed = $data->status != $request->status;
+            $data->status = $request->status;
+            $data->holder_name = $request->holder_name;
+            $data->concerned_officer = $request->concerned_officer;
+            if ($request->letter_type == 'Letter' || $request->letter_type == "VIP Letter") {
+                $data->letter_no = $request->letter_no;
+            } elseif ($request->letter_type == 'File') {
+                $data->rack_no = $request->rack_no;
+            }
+            if ($request->received_from == "People's Representative") {
+                $data->received_from_name = $request->received_from_name2;
+            } else {
+                $data->received_from_name = $request->received_from_name;
+            }
+            if ($request->received_by == 'By hand') {
+                $data->by_hand_name = $request->by_hand_name;
+            } elseif ($request->received_by == 'Courier') {
+                $data->courier_name = $request->courier_name;
+                $data->tracking_id = $request->tracking_id;
+            } elseif ($request->received_by == 'Email') {
+                $data->email = $request->email;
+            }
+            $data->save();
+            if ($status_changed) {
+                $log = new TopicLogs();
+                $log->topic_id = $data->id;
+                $log->status = $data->status;
+                $log->created_by = auth()->id();
+                $log->save();
+            }
+            if ($request->hasFile('media_files')) {
+                $files = $request->file('media_files');
+                foreach ($files as $key => $file) {
+                    $filename = uniqid() . '_' . $key . '.' . $file->getClientOriginalExtension();;
+                    $file->move(public_path('uploads/case'), $filename);
+                    $File = new TopicFiles();
+                    $File->topic_id = $data->id;
+                    $File->file_name = $file->getClientOriginalName();
+                    $File->file_path = 'public/uploads/case/' . $filename;
+                    $File->save();
+                }
+            }
+            DB::commit();
+            return response()->json(['status' => true, 'msg' => 'Case updated successfully.', 'url' => route('case.index')]);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['status' => 'false', 'msg' => $th->getMessage()]);
+        }
     }
 
     public function GetCaseActivity($id)

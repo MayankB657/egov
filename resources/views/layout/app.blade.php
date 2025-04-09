@@ -2,7 +2,7 @@
 <html lang="en">
 @include('components.head')
 
-<body id="kt_body" class="header-tablet-and-mobile-fixed aside-enabled">
+<body id="kt_body" class="header-tablet-and-mobile-fixed aside-enabled {{ $user->language == 'mr' ? 'mr' : 'en' }}">
     <div id="preloader"></div>
     <audio id="NotificationSound">
         <source src="{{ url('/') }}/public/images/notification.mp3" type="audio/mp3">

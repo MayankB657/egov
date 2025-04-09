@@ -85,7 +85,7 @@
     endforeach;
 @endphp
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -93,12 +93,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ url('/') }}/public/images/favicon-16x16.png" />
-    <link rel="shortcut" href="{{ url('/') }}/public/images/favicon-32x32.png" />
+    <link rel="icon" href="{{ url('/') }}/public/images/favicon-32x32.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <link href="{{ url('/') }}/public/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/mbiconstyle.css" rel="stylesheet" type="text/css" />
+    <script>const lang = "en";</script>
 </head>
 <style>
     body {
@@ -615,24 +615,6 @@
                                                                 data-bvalidator="required"
                                                                 value="{{ old('db_name') ?? '' }}"
                                                                 placeholder="Database Name" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="section">
-                                                    <p>2. Please enter your activation code.</p>
-                                                    <hr />
-                                                    <div class="row mb-8">
-                                                        <div class="col-xl-2">
-                                                            <div class="fs-6 fw-semibold mt-2 mb-3 required">
-                                                                Activation code</div>
-                                                        </div>
-                                                        <div class="col-xl-10 fv-row form-group">
-                                                            <input type="text" class="form-control"
-                                                                name="activation_code"
-                                                                data-bvalidator="required,maxlen[12],minlen[12]"
-                                                                data-bvalidator-msg="Enter valid activation code"
-                                                                value="{{ old('activation_code') }}"
-                                                                placeholder="Enter Activation Code" />
                                                         </div>
                                                     </div>
                                                 </div>

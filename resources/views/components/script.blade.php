@@ -101,4 +101,35 @@
         Notification.requestPermission().then((permission) => {});
     }
 </script>
+{{-- <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script> --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (document.body.classList.contains("mr")) {
+            const marathiDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+
+            function convertToMarathiDigits(str) {
+                return str.replace(/\d/g, d => marathiDigits[d]);
+            }
+
+            function traverseAndConvert(node) {
+                if (node.nodeType === 3) { // Text node
+                    if (/\d/.test(node.nodeValue)) {
+                        node.nodeValue = convertToMarathiDigits(node.nodeValue);
+                    }
+                } else {
+                    node.childNodes.forEach(traverseAndConvert);
+                }
+            }
+            traverseAndConvert(document.body);
+        }
+    });
+</script>
 @stack('js')

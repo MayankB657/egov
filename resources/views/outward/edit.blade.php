@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Edit Outward Letter
+        {{ __('labels.edit_outward_letter') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -16,63 +16,26 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Type</span>
+                                            <span class="required">{{ __('labels.type') }}</span>
                                         </label>
                                         <select class="form-select fw-bold" data-placeholder="Select Type"
                                             data-bvalidator="required" name="letter_type" data-control="select2">
                                             <option hidden></option>
                                             <option value="Letter" {{ $data->letter_type == 'Letter' ? 'selected' : '' }}>
-                                                Letter</option>
-                                            <option value="File" {{ $data->letter_type == 'File' ? 'selected' : '' }}>File
+                                                {{ __('labels.letter') }}</option>
+                                            <option value="File" {{ $data->letter_type == 'File' ? 'selected' : '' }}>
+                                                {{ __('labels.file') }}
                                             </option>
                                             <option value="VIP Letter"
-                                                {{ $data->letter_type == 'VIP Letter' ? 'selected' : '' }}>VIP Letter
+                                                {{ $data->letter_type == 'VIP Letter' ? 'selected' : '' }}>
+                                                {{ __('labels.vip_letter') }}
                                             </option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="fv-row mb-7 form-group">
-                                        <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Received by</span>
-                                        </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
-                                            data-bvalidator="required" name="received_by" data-control="select2">
-                                            <option hidden></option>
-                                            <option value="By hand" {{ $data->received_by == 'By hand' ? 'selected' : '' }}>
-                                                By hand</option>
-                                            <option value="Courier" {{ $data->received_by == 'Courier' ? 'selected' : '' }}>
-                                                Courier</option>
-                                            <option value="Email" {{ $data->received_by == 'Email' ? 'selected' : '' }}>
-                                                Email</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="fv-row mb-7 form-group">
-                                        <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Received from</span>
-                                        </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
-                                            data-bvalidator="required" name="received_from" data-control="select2">
-                                            <option hidden></option>
-                                            <option value="Internal"
-                                                {{ $data->received_from == 'Internal' ? 'selected' : '' }}>Internal</option>
-                                            <option value="Public" {{ $data->received_from == 'Public' ? 'selected' : '' }}>
-                                                Public</option>
-                                            <option value="People's Representative"
-                                                {{ $data->received_from == "People's Representative" ? 'selected' : '' }}>
-                                                People's Representative</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-1">
-                                <div class="col-lg-4">
                                     <div id="DivLetter" class="{{ $data->letter_type == 'File' ? 'd-none' : '' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Letter No</span>
+                                                <span class="required">{{ __('labels.letter_no') }}</span>
                                             </label>
                                             <input class="form-control" name="letter_no" placeholder="Enter Letter No"
                                                 data-bvalidator="required" value="{{ $data->letter_no }}" />
@@ -81,8 +44,8 @@
                                     <div id="DivFile" class="{{ $data->letter_type == 'File' ? '' : 'd-none' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">File Name / File Number / Location / Rack
-                                                    Number</span>
+                                                <span
+                                                    class="required">{{ __('labels.file_name/file_number/location/rack_number') }}</span>
                                             </label>
                                             <input class="form-control" name="rack_no"
                                                 placeholder="File Name / File Number / Location / Rack Number"
@@ -91,10 +54,27 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            <span class="required">{{ __('labels.received_by') }}</span>
+                                        </label>
+                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                            data-bvalidator="required" name="received_by" data-control="select2">
+                                            <option hidden></option>
+                                            <option value="By hand"
+                                                {{ $data->received_by == 'By hand' ? 'selected' : '' }}>
+                                                {{ __('labels.by_hand') }}</option>
+                                            <option value="Courier"
+                                                {{ $data->received_by == 'Courier' ? 'selected' : '' }}>
+                                                {{ __('labels.courier') }}</option>
+                                            <option value="Email" {{ $data->received_by == 'Email' ? 'selected' : '' }}>
+                                                {{ __('labels.email') }}</option>
+                                        </select>
+                                    </div>
                                     <div id="DivByHand" class="{{ $data->received_by == 'By hand' ? '' : 'd-none' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Person Name</span>
+                                                <span class="required">{{ __('labels.person_name') }}</span>
                                             </label>
                                             <input class="form-control" name="by_hand_name" placeholder="Enter Person Name"
                                                 data-bvalidator="required" value="{{ $data->by_hand_name }}" />
@@ -103,7 +83,7 @@
                                     <div id="DivEmail" class="{{ $data->received_by == 'Email' ? '' : 'd-none' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Email</span>
+                                                <span class="required">{{ __('labels.email') }}</span>
                                             </label>
                                             <input class="form-control" name="email" placeholder="Enter Email"
                                                 data-bvalidator="required" value="{{ $data->email }}" />
@@ -112,28 +92,44 @@
                                     <div id="DivCourier" class="{{ $data->received_by == 'Courier' ? '' : 'd-none' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Courier Name</span>
+                                                <span class="required">{{ __('labels.courier_name') }}</span>
                                             </label>
-                                            <input class="form-control" name="courier_name"
-                                                placeholder="Enter Courier Name" data-bvalidator="required"
-                                                value="{{ $data->courier_name }}" />
+                                            <input class="form-control" name="courier_name" placeholder="Enter Courier Name"
+                                                data-bvalidator="required" value="{{ $data->courier_name }}" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Tracking ID</span>
+                                                <span class="required">{{ __('labels.tracking_id') }}</span>
                                             </label>
-                                            <input class="form-control" name="tracking_id"
-                                                placeholder="Enter Tracking ID" data-bvalidator="required"
-                                                value="{{ $data->tracking_id }}" />
+                                            <input class="form-control" name="tracking_id" placeholder="Enter Tracking ID"
+                                                data-bvalidator="required" value="{{ $data->tracking_id }}" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            <span class="required">{{ __('labels.received_from') }}</span>
+                                        </label>
+                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                            data-bvalidator="required" name="received_from" data-control="select2">
+                                            <option hidden></option>
+                                            <option value="Internal"
+                                                {{ $data->received_from == 'Internal' ? 'selected' : '' }}>
+                                                {{ __('labels.internal') }}</option>
+                                            <option value="Public"
+                                                {{ $data->received_from == 'Public' ? 'selected' : '' }}>
+                                                {{ __('labels.public') }}</option>
+                                            <option value="People's Representative"
+                                                {{ $data->received_from == "People's Representative" ? 'selected' : '' }}>
+                                                {{ __('labels.people_representative') }}</option>
+                                        </select>
+                                    </div>
                                     <div id="DivConcernedPerson"
                                         class="{{ $data->received_from == "People's Representative" ? 'd-none' : '' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Name of concerned person</span>
+                                                <span class="required">{{ __('labels.name_of_concerned_person') }}</span>
                                             </label>
                                             <input class="form-control" name="received_from_name"
                                                 placeholder="Enter Name of concerned person" data-bvalidator="required"
@@ -144,7 +140,8 @@
                                         class="{{ $data->received_from == "People's Representative" ? '' : 'd-none' }}">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Name of People's Representative</span>
+                                                <span
+                                                    class="required">{{ __('labels.name_of_people_representative') }}</span>
                                             </label>
                                             <input class="form-control" name="received_from_name2"
                                                 placeholder="Enter Name of concerned person" data-bvalidator="required"
@@ -157,7 +154,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Subject</span>
+                                            <span class="required">{{ __('labels.subject') }}</span>
                                             <span data-bs-toggle="modal" data-bs-target="#add_subject"
                                                 class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
                                                 <i class="bi bi-plus text-white"></i>
@@ -177,7 +174,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Department</span>
+                                            <span class="required">{{ __('labels.department') }}</span>
                                             <span data-bs-toggle="modal" data-bs-target="#add_department"
                                                 class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
                                                 <i class="bi bi-plus text-white"></i>
@@ -197,7 +194,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Branch</span>
+                                            <span class="required">{{ __('labels.branch') }}</span>
                                             <span data-bs-toggle="modal" data-bs-target="#add_branch"
                                                 class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
                                                 <i class="bi bi-plus text-white"></i>
@@ -219,25 +216,26 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Current Status</span>
+                                            <span class="required">{{ __('labels.status') }}</span>
                                         </label>
                                         <select class="form-select fw-bold" data-bvalidator="required" name="status"
                                             data-control="select2">
                                             <option value="Received" {{ $data->status == 'Received' ? 'selected' : '' }}>
-                                                Received</option>
+                                                {{ __('labels.received') }}</option>
                                             <option value="In Process"
-                                                {{ $data->status == 'In Process' ? 'selected' : '' }}>In Process</option>
+                                                {{ $data->status == 'In Process' ? 'selected' : '' }}>
+                                                {{ __('labels.in_process') }}</option>
                                             <option value="Rejected" {{ $data->status == 'Rejected' ? 'selected' : '' }}>
-                                                Rejected</option>
+                                                {{ __('labels.rejected') }}</option>
                                             <option value="Signed" {{ $data->status == 'Signed' ? 'selected' : '' }}>
-                                                Signed</option>
+                                                {{ __('labels.signed') }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">Date</span>
+                                            <span class="required">{{ __('labels.date') }}</span>
                                         </label>
                                         <input class="form-control flatDatepickr" name="date" placeholder="Enter date"
                                             data-bvalidator="required" data-min-today="false" data-alt-format="d/m/Y"
@@ -247,7 +245,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Concerned Authority
+                                            {{ __('labels.concerned_authority') }}
                                         </label>
                                         <input class="form-control" name="authority_name"
                                             placeholder="Enter Concerned Authority"
@@ -259,7 +257,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Description
+                                            {{ __('labels.description') }}
                                         </label>
                                         <textarea name="description" rows="4" class="form-control" placeholder="Enter description">{{ $data->description }}</textarea>
                                     </div>
@@ -267,7 +265,7 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            Remark
+                                            {{ __('labels.remark') }}
                                         </label>
                                         <textarea name="comment" rows="4" class="form-control" placeholder="Enter Comment">{{ $data->comment }}</textarea>
                                     </div>
@@ -314,9 +312,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="text-end">
-                                <a href="{{ route('inward-letter.index') }}" class="btn btn-light me-3">Discard</a>
+                                <a href="{{ route('inward-letter.index') }}"
+                                    class="btn btn-light me-3">{{ __('labels.discard') }}</a>
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    {{ __('labels.submit') }}
                                 </button>
                             </div>
                         </div>
@@ -324,7 +323,7 @@
                 </div>
                 <div class="card mt-5 card-flush">
                     <div class="card-header">
-                        <div class="card-title">Comments</div>
+                        <div class="card-title">{{ __('labels.comments') }}</div>
                     </div>
                     <div class="card-body">
                         <div class="timeline-label">
@@ -348,7 +347,7 @@
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <div class="modal-content">
                             <div class="modal-header" id="kt_modal_add_department_header">
-                                <h2 class="fw-bold">Add Department</h2>
+                                <h2 class="fw-bold">{{ __('labels.add_department') }}</h2>
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
@@ -368,34 +367,34 @@
                                         data-kt-scroll-offset="300px">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="required fs-6 fw-semibold form-label mb-2">
-                                                Name
+                                                {{ __('labels.name') }}
                                             </label>
                                             <input class="form-control" name="name" placeholder="Enter Name"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="required fs-6 fw-semibold form-label mb-2">
-                                                Email
+                                                {{ __('labels.email') }}
                                             </label>
                                             <input class="form-control" name="email" placeholder="Enter Email"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="required fs-6 fw-semibold form-label mb-2">
-                                                Contact
+                                                {{ __('labels.contact') }}
                                             </label>
                                             <input class="form-control" name="contact" placeholder="Enter Contact"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="text-center pt-10">
                                             <button type="reset" class="btn btn-light me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                                             <button type="submit" class="btn btn-success me-10 btn-submit">
                                                 <span class="indicator-label">
-                                                    Submit
+                                                    {{ __('labels.submit') }}
                                                 </span>
                                                 <span class="indicator-progress">
-                                                    Please wait... <span
+                                                    {{ __('labels.please_wait') }} <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                                 </span>
                                             </button>
@@ -410,7 +409,7 @@
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <div class="modal-content">
                             <div class="modal-header" id="kt_modal_add_branch_header">
-                                <h2 class="fw-bold">Add Branch</h2>
+                                <h2 class="fw-bold">{{ __('labels.add_branch') }}</h2>
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
@@ -430,14 +429,14 @@
                                         data-kt-scroll-offset="300px">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Name</span>
+                                                <span class="required">{{ __('labels.name') }}</span>
                                             </label>
                                             <input class="form-control" name="name" placeholder="Enter Name"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Department</span>
+                                                <span class="required">{{ __('labels.department') }}</span>
                                             </label>
                                             <select class="form-select fw-bold" data-placeholder="Select Department"
                                                 data-bvalidator="required" name="department_id" data-control="select2">
@@ -450,34 +449,34 @@
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Address</span>
+                                                <span class="required">{{ __('labels.address') }}</span>
                                             </label>
                                             <textarea name="address" rows="4" class="form-control" placeholder="Enter Address"
                                                 data-bvalidator="required"></textarea>
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Email</span>
+                                                <span class="required">{{ __('labels.email') }}</span>
                                             </label>
                                             <input class="form-control" name="email" placeholder="Enter Email"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Contact</span>
+                                                <span class="required">{{ __('labels.contact') }}</span>
                                             </label>
                                             <input class="form-control" name="contact" placeholder="Enter Contact Number"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="text-center pt-10">
                                             <button type="reset" class="btn btn-light me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                                             <button type="submit" class="btn btn-success me-10 btn-submit">
                                                 <span class="indicator-label">
-                                                    Submit
+                                                    {{ __('labels.submit') }}
                                                 </span>
                                                 <span class="indicator-progress">
-                                                    Please wait... <span
+                                                    {{ __('labels.please_wait') }} <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                                 </span>
                                             </button>
@@ -492,7 +491,7 @@
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <div class="modal-content">
                             <div class="modal-header" id="kt_modal_add_subject_header">
-                                <h2 class="fw-bold">Add Subject</h2>
+                                <h2 class="fw-bold">{{ __('labels.add_subject') }}</h2>
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
@@ -512,14 +511,14 @@
                                         data-kt-scroll-offset="300px">
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Name</span>
+                                                <span class="required">{{ __('labels.name') }}</span>
                                             </label>
                                             <input class="form-control" name="name" placeholder="Enter Name"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Department</span>
+                                                <span class="required">{{ __('labels.department') }}</span>
                                             </label>
                                             <select class="form-select fw-bold" data-placeholder="Select Department"
                                                 data-bvalidator="required" name="department_id" data-control="select2">
@@ -532,7 +531,7 @@
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
-                                                <span class="required">Branch</span>
+                                                <span class="required">{{ __('labels.branch') }}</span>
                                             </label>
                                             <select class="form-select fw-bold" data-placeholder="Select Branch"
                                                 data-bvalidator="required" name="branch_id" data-control="select2">
@@ -541,13 +540,13 @@
                                         </div>
                                         <div class="text-center pt-10">
                                             <button type="reset" class="btn btn-light me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                                             <button type="submit" class="btn btn-success me-10 btn-submit">
                                                 <span class="indicator-label">
-                                                    Submit
+                                                    {{ __('labels.submit') }}
                                                 </span>
                                                 <span class="indicator-progress">
-                                                    Please wait... <span
+                                                    {{ __('labels.please_wait') }} <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                                 </span>
                                             </button>

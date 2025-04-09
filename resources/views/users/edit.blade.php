@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-dialog-centered mw-650px">
     <div class="modal-content">
         <div class="modal-header" id="edit_user_header">
-            <h2 class="fw-bold">Edit User</h2>
+            <h2 class="fw-bold">{{ __('labels.edit_user') }}</h2>
             <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                 <i class="ki-duotone ki-cross fs-1">
                     <span class="path1"></span>
@@ -20,7 +20,7 @@
                     data-kt-scroll-dependencies="#edit_user_header" data-kt-scroll-wrappers="#add_user_scroll"
                     data-kt-scroll-offset="300px">
                     <div class="row mb-6 mt-5">
-                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Avatar</label>
+                        <label class="col-lg-4 col-form-label fw-semibold fs-6">{{ __('labels.photo') }}</label>
                         <div class="col-lg-8">
                             <div class="image-input image-input-circle glowing-border" data-kt-image-input="true">
                                 @if ($user->photo == 'public/images/blank.svg')
@@ -50,24 +50,23 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-text">Allowed file types: png, jpg, jpeg.
+                            <div class="form-text">{{ __('labels.allowed_file_types') }}: png, jpg, jpeg.
                             </div>
                         </div>
                     </div>
                     <div class="fv-row mb-7 form-group">
-                        <label class="required fw-semibold fs-6 mb-2">Full
-                            Name</label>
+                        <label class="required fw-semibold fs-6 mb-2">{{ __('labels.name') }}</label>
                         <input type="text" name="name" class="form-control mb-3 mb-lg-0" placeholder="Enter name"
                             data-bvalidator="required" value="{{ $user->name }}" />
                     </div>
                     <div class="fv-row mb-7 form-group">
-                        <label class="required fw-semibold fs-6 mb-2">Email</label>
+                        <label class="required fw-semibold fs-6 mb-2">{{ __('labels.email') }}</label>
                         <input type="email" name="email" class="form-control mb-3 mb-lg-0"
                             placeholder="example@domain.com" data-bvalidator="email,required"
                             data-bvalidator-msg="Enter email address." value="{{ $user->email }}" />
                     </div>
                     <div class="fv-row mb-2 form-group">
-                        <label class="form-label required fs-6 fw-bold mb-2">Password</label>
+                        <label class="form-label required fs-6 fw-bold mb-2">{{ __('labels.password') }}</label>
                         <div class="position-relative mb-3">
                             <input class="form-control form-control-lg" type="password" name="password"
                                 autocomplete="off" data-bvalidator="passwordFormat" placeholder="Enter Password"
@@ -78,10 +77,9 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-text mb-5">Password must be at least 8 character
-                        and contain number, a-z, A-Z.</div>
+                    <div class="form-text mb-5">{{ __('labels.password_requirements') }}</div>
                     <div class="fv-row mb-7 form-group">
-                        <label class="required fw-semibold fs-6 mb-2">Role</label>
+                        <label class="required fw-semibold fs-6 mb-2">{{ __('labels.role') }}</label>
                         <div class="d-flex fv-row">
                             <select class="form-select fw-bold" data-placeholder="Select role"
                                 data-bvalidator="required" name="role" data-control="select2"
@@ -96,11 +94,11 @@
                         </div>
                     </div>
                     <div class="fv-row mb-7 form-group">
-                        <label class="fw-semibold fs-6 mb-2">Address</label>
+                        <label class="fw-semibold fs-6 mb-2">{{ __('labels.address') }}</label>
                         <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0" placeholder="Enter address">{{ $user->address }}</textarea>
                     </div>
                     <div class="fv-row mb-7 form-group">
-                        <label class="required fw-semibold fs-6 mb-2">Language</label>
+                        <label class="required fw-semibold fs-6 mb-2">{{ __('labels.language') }}</label>
                         <div class="d-flex fv-row">
                             <select class="form-select fw-bold" data-placeholder="Select language"
                                 data-bvalidator="required" name="language" data-control="select2"
@@ -116,13 +114,15 @@
                     </div>
                 </div>
                 <div class="text-center pt-10">
-                    <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Discard</button>
+                    <button type="reset" class="btn btn-light me-3"
+                        data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                     <button type="submit" class="btn btn-success me-10 btn-submit">
                         <span class="indicator-label">
-                            Submit
+                            {{ __('labels.submit') }}
                         </span>
                         <span class="indicator-progress">
-                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            {{ __('labels.please_wait') }} <span
+                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>
                 </div>

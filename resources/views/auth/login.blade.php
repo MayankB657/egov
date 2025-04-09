@@ -8,12 +8,11 @@
             </div>
             <div class="d-flex flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
                 <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
-                    <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-10">
+                    <div class="d-flex flex-center flex-column flex-column-fluid p-lg-10">
                         <form class="form w-100" id="FormId" action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="text-center mb-11">
-                                <h1 class="text-gray-900 fw-bolder mb-3">Sign In</h1>
-                                <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                                <h1 class="text-gray-900 fw-bolder mb-3">{{ __('labels.sign_in') }}</h1>
                             </div>
                             <div class="fv-row mb-8">
                                 <input type="text" placeholder="Email" name="email" class="form-control bg-transparent"
@@ -21,18 +20,18 @@
                             </div>
                             <div class="position-relative mb-3">
                                 <input class="form-control bg-transparent" type="password" name="password"
-                                    placeholder="Password" value="12345"/>
+                                    placeholder="Password" value="12345" />
                                 <span
                                     class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 showPassword">
                                     <i class="mb mb-eye-close text-muted fs-1"></i>
                                 </span>
                             </div>
-                            <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                            {{-- <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
                                 <div></div>
-                                <a href="{{ route('password.request') }}" class="link-primary">Forgot Password ?</a>
-                            </div>
-                            <div class="d-grid mb-10">
-                                <button type="submit" class="btn btn-primary">Sign In</button>
+                                <a href="{{ route('password.request') }}" class="link-primary">{{ __('labels.forgot_password') }}</a>
+                            </div> --}}
+                            <div class="d-grid mb-10 mt-10">
+                                <button type="submit" class="btn btn-primary">{{ __('labels.sign_in') }}</button>
                             </div>
                         </form>
                     </div>
@@ -42,8 +41,8 @@
                             data-kt-menu-placement="top-end">
                             <i class="bi bi-sun-fill theme-light-show fs-4"></i>
                             <i class="bi bi-moon-fill theme-dark-show fs-4"></i>
-                            <label class="ms-2 fs-4 text-gray-900 theme-light-show">Light</label>
-                            <label class="ms-2 fs-4 text-gray-900 theme-dark-show">Dark</label>
+                            <label class="ms-2 fs-4 text-gray-900 theme-light-show">{{ __('labels.light') }}</label>
+                            <label class="ms-2 fs-4 text-gray-900 theme-dark-show">{{ __('labels.dark') }}</label>
                         </a>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-gray-500 menu-active-bg menu-state-color fw-semibold py-4 fs-base w-150px"
                             data-kt-menu="true" data-kt-element="theme-mode-menu">
@@ -52,7 +51,7 @@
                                     <span class="menu-icon" data-kt-element="icon">
                                         <i class="bi bi-sun-fill fs-2"></i>
                                     </span>
-                                    <span class="menu-title">Light</span>
+                                    <span class="menu-title">{{ __('labels.light') }}</span>
                                 </a>
                             </div>
                             <div class="menu-item px-3 my-0">
@@ -60,7 +59,7 @@
                                     <span class="menu-icon" data-kt-element="icon">
                                         <i class="bi bi-moon-fill fs-2"></i>
                                     </span>
-                                    <span class="menu-title">Dark</span>
+                                    <span class="menu-title">{{ __('labels.dark') }}</span>
                                 </a>
                             </div>
                         </div>

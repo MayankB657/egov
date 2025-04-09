@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Branch
+        {{ __('labels.branch') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -24,7 +24,7 @@
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                     <span class="path3"></span>
-                                </i>Add Branch
+                                </i>{{ __('labels.add_branch') }}
                             </a>
                         </div>
                     </div>
@@ -33,12 +33,12 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="">Sr.No</th>
-                                        <th class="min-w-125px">Name</th>
-                                        <th class="min-w-125px">Address</th>
-                                        <th class="min-w-125px">Contact</th>
-                                        <th class="min-w-125px">Email</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        <th class="">{{ __('labels.sr_no') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.name') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.address') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.contact') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.email') }}</th>
+                                        <th class="text-end min-w-100px">{{ __('labels.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600 tablebody">

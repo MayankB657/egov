@@ -20,9 +20,10 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-light me-3 btn-sm">Dismiss</button>
+                    <button type="button" data-bs-dismiss="modal"
+                        class="btn btn-light me-3 btn-sm">{{ __('labels.close') }}</button>
                     <button type="submit" class="btn btn-primary btn-sm" id="MarkAsRead"
-                        data-id="{{ $notification->id }}">Mark as read</button>
+                        data-id="{{ $notification->id }}">{{ __('labels.mark_as_read') }}</button>
                 </div>
             </div>
         </div>

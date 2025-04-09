@@ -42,7 +42,7 @@
         </td>
         <td>
             @if ($user->is_two_step)
-                <div class="badge badge-light-success fw-bold">Enabled</div>
+                <div class="badge badge-light-success fw-bold">{{ __('labels.enabled') }}</div>
             @else
                 <div class="badge badge-light fw-bold">-</div>
             @endif
