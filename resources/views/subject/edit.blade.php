@@ -16,14 +16,14 @@
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.name') }}</span>
                                 </label>
-                                <input class="form-control" name="name" placeholder="Enter Name"
+                                <input class="form-control" name="name" placeholder="{{ __('labels.enter_name') }}"
                                     data-bvalidator="required" value="{{ $data->name }}" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.department') }}</span>
                                 </label>
-                                <select class="form-select fw-bold" data-placeholder="Select Department"
+                                <select class="form-select fw-bold" data-placeholder="{{ __('labels.select_department') }}"
                                     data-bvalidator="required" name="department_id" data-control="select2">
                                     <option hidden></option>
                                     @foreach ($departments as $department)
@@ -37,7 +37,7 @@
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.branch') }}</span>
                                 </label>
-                                <select class="form-select fw-bold" data-placeholder="Select Branch"
+                                <select class="form-select fw-bold" data-placeholder="{{ __('labels.select_branch') }}"
                                     data-bvalidator="required" name="branch_id" data-control="select2">
                                     @foreach ($branches as $branch)
                                         <option value="{{ $branch->id }}"

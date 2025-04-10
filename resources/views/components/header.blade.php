@@ -116,7 +116,7 @@
                                             @endforeach
                                         @else
                                             <div class="my-5 text-center">
-                                                <label>No new notification.</label>
+                                                <label>{{ __('labels.no_new_notifications') }}</label>
                                             </div>
                                         @endif
                                     </div>

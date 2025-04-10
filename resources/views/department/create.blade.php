@@ -15,21 +15,21 @@
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.name') }}</span>
                                 </label>
-                                <input class="form-control" name="name" placeholder="Enter Name"
+                                <input class="form-control" name="name" placeholder="{{ __('labels.enter_name') }}"
                                     data-bvalidator="required" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.email') }}</span>
                                 </label>
-                                <input class="form-control" name="email" placeholder="Enter Email"
+                                <input class="form-control" name="email" placeholder="{{ __('labels.enter_email') }}"
                                     data-bvalidator="required" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.contact') }}</span>
                                 </label>
-                                <input class="form-control" name="contact" placeholder="Enter Contact Number"
+                                <input class="form-control" name="contact" placeholder="{{ __('labels.enter_contact') }}"
                                     data-bvalidator="required" />
                             </div>
                         </div>

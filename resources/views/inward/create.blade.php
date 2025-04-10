@@ -17,8 +17,9 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             <span class="required">{{ __('labels.type') }}</span>
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Type"
-                                            data-bvalidator="required" name="letter_type" data-control="select2">
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_type') }}" data-bvalidator="required"
+                                            name="letter_type" data-control="select2">
                                             <option hidden></option>
                                             <option value="Letter">{{ __('labels.letter') }}</option>
                                             <option value="File">{{ __('labels.file') }}</option>
@@ -30,8 +31,9 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.letter_no') }}</span>
                                             </label>
-                                            <input class="form-control" name="letter_no" placeholder="Enter Letter No"
-                                                data-bvalidator="required" value="{{ $unique }}" />
+                                            <input class="form-control" name="letter_no"
+                                                placeholder="{{ __('labels.enter_letter_no') }}" data-bvalidator="required"
+                                                value="{{ $unique }}" />
                                         </div>
                                     </div>
                                     <div id="DivFile" class="d-none">
@@ -41,7 +43,7 @@
                                                     class="required">{{ __('labels.file_name/file_number/location/rack_number') }}</span>
                                             </label>
                                             <input class="form-control" name="rack_no"
-                                                placeholder="File Name / File Number / Location / Rack Number"
+                                                placeholder="{{ __('labels.file_name/file_number/location/rack_number') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                     </div>
@@ -51,7 +53,8 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             <span class="required">{{ __('labels.received_by') }}</span>
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_received_by') }}"
                                             data-bvalidator="required" name="received_by" data-control="select2">
                                             <option hidden></option>
                                             <option value="By hand">{{ __('labels.by_hand') }}</option>
@@ -64,7 +67,8 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.person_name') }}</span>
                                             </label>
-                                            <input class="form-control" name="by_hand_name" placeholder="Enter Person Name"
+                                            <input class="form-control" name="by_hand_name"
+                                                placeholder="{{ __('labels.enter_person_name') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                     </div>
@@ -73,8 +77,8 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.email') }}</span>
                                             </label>
-                                            <input class="form-control" name="email" placeholder="Enter Email"
-                                                data-bvalidator="required" />
+                                            <input class="form-control" name="email"
+                                                placeholder="{{ __('labels.enter_email') }}" data-bvalidator="required" />
                                         </div>
                                     </div>
                                     <div id="DivCourier" class="d-none">
@@ -82,14 +86,16 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.courier_name') }}</span>
                                             </label>
-                                            <input class="form-control" name="courier_name" placeholder="Enter Courier Name"
+                                            <input class="form-control" name="courier_name"
+                                                placeholder="{{ __('labels.enter_courier_name') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.tracking_id') }}</span>
                                             </label>
-                                            <input class="form-control" name="tracking_id" placeholder="Enter Tracking ID"
+                                            <input class="form-control" name="tracking_id"
+                                                placeholder="{{ __('labels.enter_tracking_id') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                     </div>
@@ -99,7 +105,8 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             <span class="required">{{ __('labels.received_from') }}</span>
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Received By"
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_received_from') }}"
                                             data-bvalidator="required" name="received_from" data-control="select2">
                                             <option hidden></option>
                                             <option value="Internal">{{ __('labels.internal') }}</option>
@@ -114,7 +121,8 @@
                                                 <span class="required">{{ __('labels.name_of_concerned_person') }}</span>
                                             </label>
                                             <input class="form-control" name="received_from_name"
-                                                placeholder="Enter Name of concerned person" data-bvalidator="required" />
+                                                placeholder="{{ __('labels.enter_name_of_concerned_person') }}"
+                                                data-bvalidator="required" />
                                         </div>
                                     </div>
                                     <div id="DivPeopleRepresentitive" class="d-none">
@@ -124,7 +132,7 @@
                                                     class="required">{{ __('labels.name_of_people_representative') }}</span>
                                             </label>
                                             <input class="form-control" name="received_from_name2"
-                                                placeholder="Enter Name of People's Representative"
+                                                placeholder="{{ __('labels.enter_name_of_people_representative') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                     </div>
@@ -134,31 +142,14 @@
                                 <div class="col-lg-4">
                                     <div class="fv-row mb-7 form-group">
                                         <label class="fs-6 fw-semibold form-label mb-2">
-                                            <span class="required">{{ __('labels.subject') }}</span>
-                                            <span data-bs-toggle="modal" data-bs-target="#add_subject"
-                                                class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
-                                                <i class="bi bi-plus text-white"></i>
-                                            </span>
-                                        </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Subject"
-                                            data-bvalidator="required" name="subject_id" data-control="select2">
-                                            <option hidden></option>
-                                            @foreach ($subjects as $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="fv-row mb-7 form-group">
-                                        <label class="fs-6 fw-semibold form-label mb-2">
                                             <span class="required">{{ __('labels.department') }}</span>
                                             <span data-bs-toggle="modal" data-bs-target="#add_department"
                                                 class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
                                                 <i class="bi bi-plus text-white"></i>
                                             </span>
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Department"
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_department') }}"
                                             data-bvalidator="required" name="department_id" data-control="select2">
                                             <option hidden></option>
                                             @foreach ($departments as $department)
@@ -176,9 +167,29 @@
                                                 <i class="bi bi-plus text-white"></i>
                                             </span>
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Branch"
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_branch') }}"
                                             data-bvalidator="required" name="branch_id" data-control="select2">
                                             <option hidden></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            <span class="required">{{ __('labels.subject') }}</span>
+                                            <span data-bs-toggle="modal" data-bs-target="#add_subject"
+                                                class="badge badge-primary justify-content-center badge-sm badge-circle fs-6">
+                                                <i class="bi bi-plus text-white"></i>
+                                            </span>
+                                        </label>
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_subject') }}"
+                                            data-bvalidator="required" name="subject_id" data-control="select2">
+                                            <option hidden></option>
+                                            @foreach ($subjects as $subject)
+                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -203,8 +214,9 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             <span class="required">{{ __('labels.date') }}</span>
                                         </label>
-                                        <input class="form-control flatDatepickr" name="date" placeholder="Enter date"
-                                            data-bvalidator="required" data-min-today="false" data-alt-format="d/m/Y" />
+                                        <input class="form-control flatDatepickr" name="date"
+                                            placeholder="{{ __('labels.enter_date') }}" data-bvalidator="required"
+                                            data-min-today="false" data-alt-format="d/m/Y" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -213,7 +225,7 @@
                                             {{ __('labels.concerned_authority') }}
                                         </label>
                                         <input class="form-control" name="authority_name"
-                                            placeholder="Enter Concerned Authority" />
+                                            placeholder="{{ __('labels.enter_concerned_authority') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +235,8 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.description') }}
                                         </label>
-                                        <textarea name="description" rows="4" class="form-control" placeholder="Enter description"></textarea>
+                                        <textarea name="description" rows="4" class="form-control"
+                                            placeholder="{{ __('labels.enter_description') }}"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -231,7 +244,7 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.remark') }}
                                         </label>
-                                        <textarea name="comment" rows="4" class="form-control" placeholder="Enter Comment"></textarea>
+                                        <textarea name="comment" rows="4" class="form-control" placeholder="{{ __('labels.enter_remark') }}"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -283,21 +296,23 @@
                                             <label class="required fs-6 fw-semibold form-label mb-2">
                                                 {{ __('labels.name') }}
                                             </label>
-                                            <input class="form-control" name="name" placeholder="Enter Name"
-                                                data-bvalidator="required" />
+                                            <input class="form-control" name="name"
+                                                placeholder="{{ __('labels.enter_name') }}" data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="required fs-6 fw-semibold form-label mb-2">
                                                 {{ __('labels.email') }}
                                             </label>
-                                            <input class="form-control" name="email" placeholder="Enter Email"
+                                            <input class="form-control" name="email"
+                                                placeholder="{{ __('labels.enter_email') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="required fs-6 fw-semibold form-label mb-2">
                                                 {{ __('labels.contact') }}
                                             </label>
-                                            <input class="form-control" name="contact" placeholder="Enter Contact"
+                                            <input class="form-control" name="contact"
+                                                placeholder="{{ __('labels.enter_contact') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="text-center pt-10">
@@ -345,14 +360,15 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.name') }}</span>
                                             </label>
-                                            <input class="form-control" name="name" placeholder="Enter Name"
-                                                data-bvalidator="required" />
+                                            <input class="form-control" name="name"
+                                                placeholder="{{ __('labels.name') }}" data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.department') }}</span>
                                             </label>
-                                            <select class="form-select fw-bold" data-placeholder="Select Department"
+                                            <select class="form-select fw-bold"
+                                                data-placeholder="{{ __('labels.select_department') }}"
                                                 data-bvalidator="required" name="department_id" data-control="select2">
                                                 <option hidden></option>
                                                 @foreach ($departments as $department)
@@ -365,21 +381,23 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.address') }}</span>
                                             </label>
-                                            <textarea name="address" rows="4" class="form-control" placeholder="Enter Address"
+                                            <textarea name="address" rows="4" class="form-control" placeholder="{{ __('labels.enter_address') }}"
                                                 data-bvalidator="required"></textarea>
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.email') }}</span>
                                             </label>
-                                            <input class="form-control" name="email" placeholder="Enter Email"
+                                            <input class="form-control" name="email"
+                                                placeholder="{{ __('labels.enter_email') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.contact') }}</span>
                                             </label>
-                                            <input class="form-control" name="contact" placeholder="Enter Contact Number"
+                                            <input class="form-control" name="contact"
+                                                placeholder="{{ __('labels.enter_contact') }}"
                                                 data-bvalidator="required" />
                                         </div>
                                         <div class="text-center pt-10">
@@ -427,14 +445,15 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.name') }}</span>
                                             </label>
-                                            <input class="form-control" name="name" placeholder="Enter Name"
-                                                data-bvalidator="required" />
+                                            <input class="form-control" name="name"
+                                                placeholder="{{ __('labels.name') }}" data-bvalidator="required" />
                                         </div>
                                         <div class="fv-row mb-7 form-group">
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.department') }}</span>
                                             </label>
-                                            <select class="form-select fw-bold" data-placeholder="Select Department"
+                                            <select class="form-select fw-bold"
+                                                data-placeholder="{{ __('labels.select_department') }}"
                                                 data-bvalidator="required" name="department_id" data-control="select2">
                                                 <option hidden></option>
                                                 @foreach ($departments as $department)
@@ -447,7 +466,8 @@
                                             <label class="fs-6 fw-semibold form-label mb-2">
                                                 <span class="required">{{ __('labels.branch') }}</span>
                                             </label>
-                                            <select class="form-select fw-bold" data-placeholder="Select Branch"
+                                            <select class="form-select fw-bold"
+                                                data-placeholder="{{ __('labels.select_branch') }}"
                                                 data-bvalidator="required" name="branch_id" data-control="select2">
                                                 <option hidden></option>
                                             </select>

@@ -98,15 +98,19 @@
     <link href="{{ url('/') }}/public/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('/') }}/public/css/mbiconstyle.css" rel="stylesheet" type="text/css" />
-    <script>const lang = "en";</script>
+    <script>
+        const lang = "en";
+    </script>
 </head>
 <style>
     body {
         background-image: url('{{ asset('public/images/bg6.jpg') }}');
+        background-size: cover;
     }
 
     [data-bs-theme="dark"] body {
         background-image: url('{{ asset('public/images/bg6-dark.jpg') }}');
+        background-size: cover;
     }
 </style>
 
@@ -440,8 +444,7 @@
                                                                     <i
                                                                         class="text-success bi bi-check-circle-fill fs-2"></i>
                                                                 @else
-                                                                    <i
-                                                                        class="text-danger bi bi-x-circle-fill fs-2"></i>
+                                                                    <i class="text-danger bi bi-x-circle-fill fs-2"></i>
                                                                 @endif
                                                             </td>
                                                         </tr>

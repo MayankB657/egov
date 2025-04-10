@@ -25,10 +25,10 @@
                                     <i class="ki-duotone ki-filter fs-2">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
-                                    </i>Filter</button>
+                                    </i>{{ __('labels.filter') }}</button>
                                 <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
                                     <div class="px-7 py-5">
-                                        <div class="fs-5 text-gray-900 fw-bold">Filter Options</div>
+                                        <div class="fs-5 text-gray-900 fw-bold">{{ __('labels.filter_options') }}</div>
                                     </div>
                                     <div class="separator border-gray-200"></div>
                                     <form action="{{ route('users.index') }}" method="GET">
@@ -55,11 +55,13 @@
                                                 <button type="submit" class="btn btn-primary fw-semibold px-6"
                                                     data-kt-menu-dismiss="true">{{ __('labels.apply') }}</button>
                                             </div>
-                                            <!--end::Actions-->
                                         </div>
                                     </form>
                                 </div>
                                 @can('users.create')
+                                    <button class="btn btn-light-success me-3" data-bs-toggle="modal"
+                                        data-bs-target="#import_users">
+                                        <i class="fs-3 bi bi-database-down"></i>{{ __('labels.import') }}</button>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#add_user">
                                         <i class="ki-duotone ki-plus fs-2"></i>{{ __('labels.add_user') }}</button>
@@ -124,7 +126,8 @@
                                                         <label
                                                             class="required fw-semibold fs-6 mb-2">{{ __('labels.name') }}</label>
                                                         <input type="text" name="name"
-                                                            class="form-control mb-3 mb-lg-0" placeholder="Enter name"
+                                                            class="form-control mb-3 mb-lg-0"
+                                                            placeholder="{{ __('labels.enter_name') }}"
                                                             data-bvalidator="required" />
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
@@ -132,7 +135,7 @@
                                                             class="required fw-semibold fs-6 mb-2">{{ __('labels.email') }}</label>
                                                         <input type="email" name="email"
                                                             class="form-control mb-3 mb-lg-0"
-                                                            placeholder="example@domain.com"
+                                                            placeholder="{{ __('labels.enter_email') }}"
                                                             data-bvalidator="email,required"
                                                             data-bvalidator-msg="Enter email address." />
                                                     </div>
@@ -144,7 +147,7 @@
                                                             <input class="form-control form-control-lg" type="password"
                                                                 name="password" autocomplete="off"
                                                                 data-bvalidator="required,passwordFormat"
-                                                                placeholder="Enter Password"
+                                                                placeholder="{{ __('labels.enter_password') }}"
                                                                 data-bvalidator-msg="Paasword strength must be 100%." />
                                                             <span
                                                                 class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 showPassword">
@@ -172,7 +175,8 @@
                                                     <div class="fv-row mb-7 form-group">
                                                         <label
                                                             class="fw-semibold fs-6 mb-2">{{ __('labels.address') }}</label>
-                                                        <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0" placeholder="Enter address"></textarea>
+                                                        <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0"
+                                                            placeholder="{{ __('labels.enter_address') }}"></textarea>
                                                     </div>
                                                     <div class="fv-row mb-7 form-group">
                                                         <label
@@ -180,7 +184,7 @@
                                                         <div class="d-flex fv-row">
                                                             <select class="form-select fw-bold" data-control="select2"
                                                                 data-dropdown-parent="body" data-hide-search="true"
-                                                                data-placeholder="Select language"
+                                                                data-placeholder="{{ __('labels.select_language') }}"
                                                                 data-bvalidator="required" name="language">
                                                                 <option hidden></option>
                                                                 @foreach (config('app.languages') ?? [] as $key => $lang)
@@ -196,9 +200,10 @@
                                                             class="required fw-semibold fs-6 mb-2">{{ __('labels.role') }}</label>
                                                         <div class="d-flex fv-row">
                                                             <select class="form-select fw-bold"
-                                                                data-placeholder="Select role" data-bvalidator="required"
-                                                                data-control="select2" data-dropdown-parent="body"
-                                                                data-hide-search="true" name="role">
+                                                                data-placeholder="{{ __('labels.select_role') }}"
+                                                                data-bvalidator="required" data-control="select2"
+                                                                data-dropdown-parent="body" data-hide-search="true"
+                                                                name="role">
                                                                 <option></option>
                                                                 @foreach ($RoleList as $role)
                                                                     <option value="{{ $role->id }}">
@@ -228,6 +233,63 @@
                                 </div>
                             </div>
                             <div class="modal fade edit" id="edit_user" tabindex="-1" aria-hidden="true">
+                            </div>
+                            <div class="modal fade" id="import_users" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered mw-650px">
+                                    <div class="modal-content">
+                                        <div class="modal-header" id="modal_import_users_header">
+                                            <h2 class="fw-bold">{{ __('labels.import_users') }}</h2>
+                                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                data-bs-dismiss="modal">
+                                                <i class="ki-duotone ki-cross fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body px-5 my-7">
+                                            <form id="FormId" class="form ajax-form-submit"
+                                                action="{{ route('ImportUsers') }}" enctype="multipart/form-data"
+                                                method="POST" data-dismiss-modal="import_users" data-preloader="false"
+                                                data-refresh="false" data-reset="true">
+                                                @csrf
+                                                <div class="d-flex flex-column scroll-y px-5 px-lg-10"
+                                                    id="modal_import_users_scroll" data-kt-scroll="true"
+                                                    data-kt-scroll-activate="true" data-kt-scroll-max-height="auto"
+                                                    data-kt-scroll-dependencies="#modal_import_users_header"
+                                                    data-kt-scroll-wrappers="#modal_import_users_scroll"
+                                                    data-kt-scroll-offset="300px">
+                                                    <div class="fv-row mb-7 form-group">
+                                                        <label
+                                                            class="required fw-semibold fs-6 mb-2">{{ __('labels.excel_file') }}</label>
+                                                        <input type="file" name="excel_file" class="form-control"
+                                                            accept="excel/*" data-bvalidator="required">
+                                                    </div>
+                                                    <span class="text-muted mt-6">
+                                                        <strong class="text-danger fw-bold">{{ __('labels.headers') }} :
+                                                        </strong>
+                                                        name, email, password, address (optional). {{ __('labels.download_sample_file') }}
+                                                        <a href="{{ url('/') }}/public/empty-files/empty-users.xlsx"
+                                                            download="">{{ __('labels.here') }}</a>
+                                                    </span>
+                                                </div>
+                                                <div class="text-center pt-10">
+                                                    <button type="reset" class="btn btn-light me-3"
+                                                        data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
+                                                    <button type="submit" class="btn btn-success me-10 btn-submit">
+                                                        <span class="indicator-label">
+                                                            {{ __('labels.submit') }}
+                                                        </span>
+                                                        <span class="indicator-progress">
+                                                            {{ __('labels.please_wait') }} <span
+                                                                class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -14,8 +14,9 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.subject') }}
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Subject"
-                                            data-bvalidator="required" name="subject_id" data-control="select2">
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_subject') }}" data-bvalidator="required"
+                                            name="subject_id" data-control="select2">
                                             <option hidden></option>
                                             @foreach ($subjects as $subject)
                                                 <option value="{{ $subject->id }}"
@@ -30,7 +31,8 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.department') }}
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Department"
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_department') }}"
                                             data-bvalidator="required" name="department_id" data-control="select2">
                                             <option hidden></option>
                                             @foreach ($departments as $department)
@@ -46,8 +48,9 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.branch') }}
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Branch"
-                                            data-bvalidator="required" name="branch_id" data-control="select2">
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_branch') }}" data-bvalidator="required"
+                                            name="branch_id" data-control="select2">
                                             <option hidden></option>
                                             @foreach ($branches as $branch)
                                                 <option value="{{ $branch->id }}"
@@ -62,8 +65,9 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">
                                             {{ __('labels.status') }}
                                         </label>
-                                        <select class="form-select fw-bold" data-placeholder="Select Branch"
-                                            data-bvalidator="required" name="status" data-control="select2">
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_status') }}" data-bvalidator="required"
+                                            name="status" data-control="select2">
                                             <option hidden></option>
                                             <option value="Received">{{ __('labels.received') }}</option>
                                             <option value="In Process">{{ __('labels.in_process') }}</option>
@@ -72,7 +76,36 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 col-md-12">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="fv-row mb-7 form-group">
+                                        <label class="fs-6 fw-semibold form-label mb-2">
+                                            {{ __('labels.type') }}
+                                        </label>
+                                        <select class="form-select fw-bold"
+                                            data-placeholder="{{ __('labels.select_type') }}" name="letter_type"
+                                            data-control="select2">
+                                            <option hidden></option>
+                                            <option value="Letter" {{ request('status') == 'Letter' ? 'selected' : '' }}>
+                                                {{ __('labels.letter') }}</option>
+                                            <option value="File" {{ request('status') == 'File' ? 'selected' : '' }}>
+                                                {{ __('labels.file') }}</option>
+                                            <option value="VIP Letter"
+                                                {{ request('status') == 'VIP Letter' ? 'selected' : '' }}>
+                                                {{ __('labels.vip_letter') }}</option>
+                                            <option value="Note" {{ request('status') == 'Note' ? 'selected' : '' }}>
+                                                {{ __('labels.note') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label class="fs-6 fw-semibold form-label mb-2">
+                                        {{ __('labels.date') }}
+                                    </label>
+                                    <input type="text" class="form-control flatRangepickr"
+                                        placeholder="{{ __('labels.date') }}" name="date"
+                                        value="{{ request('date') }}">
+                                </div>
+                                <div class="col-lg-12 col-md-12">
                                     <div class="fv-row form-group text-end">
                                         <label class="fs-6 fw-semibold form-label mb-2">&nbsp;</label>
                                         <div>
@@ -96,8 +129,9 @@
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                 </i>
-                                <input type="text" class="form-control w-250px ps-13" placeholder="Search Inward Letter"
-                                    name="search" value="{{ request('search') }}" id="InputSearch"
+                                <input type="text" class="form-control w-250px ps-13"
+                                    placeholder="{{ __('labels.search_inward_letter') }}" name="search"
+                                    value="{{ request('search') }}" id="InputSearch"
                                     data-search-url="{{ route('case.index') }}" />
                             </div>
                         </div>
@@ -119,7 +153,8 @@
                                         <th class="">{{ __('labels.sr_no') }}</th>
                                         <th class="min-w-125px">{{ __('labels.subject') }}</th>
                                         <th class="min-w-125px">{{ __('labels.description') }}</th>
-                                        <th class="min-w-125px">{{ __('labels.letter_number') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.type') }}</th>
+                                        <th class="min-w-125px">{{ __('labels.number') }}</th>
                                         <th class="min-w-125px">{{ __('labels.proposal_received_from') }}</th>
                                         <th class="min-w-125px">{{ __('labels.status') }}</th>
                                         <th class="min-w-125px">{{ __('labels.current_status') }}</th>

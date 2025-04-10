@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 use Spatie\Permission\Models\Role;
+use Symfony\Component\Process\Process;
 
 class InstallController extends Controller
 {
@@ -125,6 +126,41 @@ class InstallController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             throw $th;
+        }
+    }
+
+    public function UpdateSystem()
+    {
+        $username = env('GIT_USERNAME');
+        $token = env('GIT_PAT');
+        $repo = env('GIT_REPO');
+        try {
+            $process = new Process([
+                'git',
+                'pull',
+                "https://{$username}:{$token}@{$repo}"
+            ]);
+            $process->setWorkingDirectory(base_path());
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Git pull failed',
+                    'output' => $process->getErrorOutput()
+                ], 500);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Code pulled successfully',
+                'output' => $process->getOutput()
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error: ' . $e->getMessage()
+            ], 500);
         }
     }
 }

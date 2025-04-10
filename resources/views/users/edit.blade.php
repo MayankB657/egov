@@ -56,20 +56,22 @@
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="required fw-semibold fs-6 mb-2">{{ __('labels.name') }}</label>
-                        <input type="text" name="name" class="form-control mb-3 mb-lg-0" placeholder="Enter name"
-                            data-bvalidator="required" value="{{ $user->name }}" />
+                        <input type="text" name="name" class="form-control mb-3 mb-lg-0"
+                            placeholder="{{ __('labels.enter_name') }}" data-bvalidator="required"
+                            value="{{ $user->name }}" />
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="required fw-semibold fs-6 mb-2">{{ __('labels.email') }}</label>
                         <input type="email" name="email" class="form-control mb-3 mb-lg-0"
-                            placeholder="example@domain.com" data-bvalidator="email,required"
+                            placeholder="{{ __('labels.enter_email') }}" data-bvalidator="email,required"
                             data-bvalidator-msg="Enter email address." value="{{ $user->email }}" />
                     </div>
                     <div class="fv-row mb-2 form-group">
                         <label class="form-label required fs-6 fw-bold mb-2">{{ __('labels.password') }}</label>
                         <div class="position-relative mb-3">
                             <input class="form-control form-control-lg" type="password" name="password"
-                                autocomplete="off" data-bvalidator="passwordFormat" placeholder="Enter Password"
+                                autocomplete="off" data-bvalidator="passwordFormat"
+                                placeholder="{{ __('labels.enter_password') }}"
                                 data-bvalidator-msg="Paasword strength must be 100%." />
                             <span
                                 class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 showPassword">
@@ -81,7 +83,7 @@
                     <div class="fv-row mb-7 form-group">
                         <label class="required fw-semibold fs-6 mb-2">{{ __('labels.role') }}</label>
                         <div class="d-flex fv-row">
-                            <select class="form-select fw-bold" data-placeholder="Select role"
+                            <select class="form-select fw-bold" data-placeholder="{{ __('labels.select_role') }}"
                                 data-bvalidator="required" name="role" data-control="select2"
                                 data-dropdown-parent="body" data-hide-search="true">
                                 <option hidden></option>
@@ -95,12 +97,13 @@
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fw-semibold fs-6 mb-2">{{ __('labels.address') }}</label>
-                        <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0" placeholder="Enter address">{{ $user->address }}</textarea>
+                        <textarea name="address" rows="4" class="form-control mb-3 mb-lg-0"
+                            placeholder="{{ __('labels.enter_address') }}">{{ $user->address }}</textarea>
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="required fw-semibold fs-6 mb-2">{{ __('labels.language') }}</label>
                         <div class="d-flex fv-row">
-                            <select class="form-select fw-bold" data-placeholder="Select language"
+                            <select class="form-select fw-bold" data-placeholder="{{ __('labels.select_language') }}"
                                 data-bvalidator="required" name="language" data-control="select2"
                                 data-dropdown-parent="body" data-hide-search="true">
                                 <option hidden></option>

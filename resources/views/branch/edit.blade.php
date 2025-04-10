@@ -16,14 +16,14 @@
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.name') }}</span>
                                 </label>
-                                <input class="form-control" name="name" placeholder="Enter Name"
+                                <input class="form-control" name="name" placeholder="{{ __('labels.enter_name') }}"
                                     data-bvalidator="required" value="{{ $data->name }}" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.department') }}</span>
                                 </label>
-                                <select class="form-select fw-bold" data-placeholder="Select Department"
+                                <select class="form-select fw-bold" data-placeholder="{{ __('labels.select_department') }}"
                                     data-bvalidator="required" name="department_id" data-control="select2">
                                     <option hidden></option>
                                     @foreach ($departments as $department)
@@ -37,26 +37,28 @@
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.address') }}</span>
                                 </label>
-                                <textarea name="address" rows="4" class="form-control" placeholder="Enter Address" data-bvalidator="required">{{ $data->address }}</textarea>
+                                <textarea name="address" rows="4" class="form-control" placeholder="{{ __('labels.enter_address') }}"
+                                    data-bvalidator="required">{{ $data->address }}</textarea>
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.email') }}</span>
                                 </label>
-                                <input class="form-control" name="email" placeholder="Enter Email"
+                                <input class="form-control" name="email" placeholder="{{ __('labels.enter_email') }}"
                                     data-bvalidator="required" value="{{ $data->email }}" />
                             </div>
                             <div class="fv-row mb-7 form-group">
                                 <label class="fs-6 fw-semibold form-label mb-2">
                                     <span class="required">{{ __('labels.contact') }}</span>
                                 </label>
-                                <input class="form-control" name="contact" placeholder="Enter Contact Number"
+                                <input class="form-control" name="contact" placeholder="{{ __('labels.enter_contact') }}"
                                     data-bvalidator="required" value="{{ $data->contact }}" />
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="text-end">
-                                <a href="{{ route('branch.index') }}" class="btn btn-light me-3">{{ __('labels.discard') }}</a>
+                                <a href="{{ route('branch.index') }}"
+                                    class="btn btn-light me-3">{{ __('labels.discard') }}</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('labels.submit') }}
                                 </button>

@@ -59966,10 +59966,10 @@ html {
     font-family: Inter, Helvetica, sans-serif
 }
 
-body.mr {
+/* body.mr {
     font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
     font-variant-numeric: traditional;
-}
+} */
 
 @media (max-width:991.98px) {
 

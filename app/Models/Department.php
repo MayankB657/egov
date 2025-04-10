@@ -9,4 +9,11 @@ class Department extends Model
     protected $table = 'department';
     public $primaryKey = 'id';
     public $timestamps = true;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'contact',
+        'created_by'
+    ];
 }

@@ -31,12 +31,18 @@ class OutwardLetterController extends Controller
         if ($inout) {
             $query->where('inward_no', '!=', null);
         }
+        if ($request->has('date')) {
+            [$startDate, $endDate] = explode(' - ', $request->date);
+            $start = Carbon::parse($startDate)->startOfDay();
+            $end = Carbon::parse($endDate)->endOfDay();
+            $query->whereBetween('created_at', [$start, $end]);
+        }
         if ($search = $request->input('search')) {
             $query->where('inward_no', 'like', "%{$search}%")
                 ->orWhere('outward_no', 'like', "%{$search}%")
                 ->orWhere('letter_no', 'like', "%{$search}%");
         }
-        foreach (['subject_id', 'department_id', 'branch_id', 'status'] as $field) {
+        foreach (['subject_id', 'department_id', 'branch_id', 'status', 'letter_type'] as $field) {
             if ($value = $request->input($field)) {
                 $query->where($field, $value);
             }
@@ -110,7 +116,8 @@ class OutwardLetterController extends Controller
             $data = new Letter();
             $data->type = 'outward';
             $data->inward_no = $isExistingOutward ? $inward->inward_no : null;
-            $data->outward_no = 'OUT/' . Carbon::now()->format('Y/m/d') . '/' . $request->letter_no;
+            $letterNumber = $isExistingOutward ? $inward->letter_no : $request->letter_no;
+            $data->outward_no = 'OUT/' . Carbon::now()->format('Y/m/d') . '/' . $letterNumber;
             $data->letter_type = $request->letter_type;
             $data->subject_id = $request->subject_id;
             $data->department_id = $request->department_id;
@@ -136,6 +143,7 @@ class OutwardLetterController extends Controller
                 } elseif ($request->received_by == 'Email') {
                     $data->email = $request->email;
                 }
+                $inward->outward_no = $data->outward_no;
                 $inward->status = $request->status;
                 $inward->save();
             }

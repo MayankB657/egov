@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Roles
+        {{ __('labels.roles') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -15,7 +15,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <div class="fw-bold text-gray-600 mb-5">Total users with this role:
+                                    <div class="fw-bold text-gray-600 mb-5">{{ __('labels.total_users_with_role') }}:
                                         {{ $roleUserCounts[$value->name] ?? 0 }}</div>
                                     <div class="d-flex flex-column text-gray-600">
                                         @php
@@ -43,7 +43,7 @@
                                                         ->isEmpty();
                                                 @endphp
                                                 @if ($hasAllPermissions)
-                                                    : All permissions
+                                                    : {{ __('labels.all_permissions') }}
                                                 @else
                                                     : {{ $permissionNames->join(', ') }}
                                                 @endif
@@ -53,10 +53,9 @@
                                 </div>
                                 <div class="card-footer flex-wrap pt-0">
                                     <a href="{{ route('role-permission.show', $value->id) }}"
-                                        class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+                                        class="btn btn-light btn-active-primary my-1 me-2">{{ __('labels.view') }}</a>
                                     <a href="{{ route('role-permission.edit', $value->id) }}"
-                                        class="btn btn-light btn-active-light-primary my-1">Edit
-                                        Role</a>
+                                        class="btn btn-light btn-active-light-primary my-1">{{ __('labels.edit') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +67,7 @@
                                     data-bs-toggle="modal" data-bs-target="#modal_add_role">
                                     <img src="{{ url('/') }}/public/images/4.png" alt=""
                                         class="mw-100 mh-150px mb-7" />
-                                    <div class="fw-bold fs-3 text-gray-600 text-hover-primary">Add New Role
+                                    <div class="fw-bold fs-3 text-gray-600 text-hover-primary">{{ __('labels.add_role') }}
                                     </div>
                                 </button>
                             </div>
@@ -79,7 +78,7 @@
                     <div class="modal-dialog modal-dialog-centered mw-750px">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h2 class="fw-bold">Add a Role</h2>
+                                <h2 class="fw-bold">{{ __('labels.add_role') }}</h2>
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
@@ -95,21 +94,21 @@
                                     <div class="d-flex flex-column me-n7 pe-7">
                                         <div class="fv-row form-group">
                                             <label class="fs-5 fw-bold form-label mb-2">
-                                                <span class="required">Role name</span>
+                                                <span class="required">{{ __('labels.role_name') }}</span>
                                             </label>
-                                            <input placeholder="Enter a role name" data-bvalidator="maxlen[20],required"
-                                                class="form-control" name="role" />
+                                            <input placeholder="{{ __('labels.enter_name') }}"
+                                                data-bvalidator="maxlen[20],required" class="form-control" name="role" />
                                         </div>
                                     </div>
                                     <div class="text-center pt-15">
                                         <button type="reset" class="btn btn-light me-3"
-                                            data-bs-dismiss="modal">Discard</button>
+                                            data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                                         <button type="submit" class="btn btn-success me-10 btn-submit">
                                             <span class="indicator-label">
-                                                Submit
+                                                {{ __('labels.submit') }}
                                             </span>
                                             <span class="indicator-progress">
-                                                Please wait... <span
+                                                {{ __('labels.please_wait') }} <span
                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                             </span>
                                         </button>

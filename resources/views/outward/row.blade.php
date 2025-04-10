@@ -19,6 +19,7 @@
                 @endif
             </td>
             <td>{{ $row->subject->name }}</td>
+            <td>{{ $row->letter_type }}</td>
             <td>{{ $row->letter_type == 'File' ? $row->rack_no : $row->letter_no }}</td>
             <td><span class="badge badge-{{ Helper::statusColor($row->status) }} badgeStatus"
                     data-id="{{ base64UrlEncode($row->id) }}">{{ $row->status }}</span></td>

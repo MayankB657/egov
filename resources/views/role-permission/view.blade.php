@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        View Role
+        {{ __('labels.view_role') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -32,7 +32,7 @@
                                                     ->isEmpty();
                                             @endphp
                                             @if ($hasAllPermissions)
-                                                : All permissions
+                                                : {{ __('labels.all_permissions') }}
                                             @else
                                                 : {{ $permissionNames->join(', ') }}
                                             @endif
@@ -42,13 +42,13 @@
                             </div>
                             <div class="card-footer d-flex justify-content-end ">
                                 <a href="{{ route('role-permission.edit', $Roles->id) }}"
-                                    class="btn btn-light btn-active-primary me-2">Edit
+                                    class="btn btn-light btn-active-primary me-2">{{ __('labels.edit') }}
                                 </a>
                                 <form action="{{ route('role-permission.destroy', $Roles->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="btn btn-light-danger btn-active-primary ConfirmDelete">Delete</button>
+                                        class="btn btn-light-danger btn-active-primary ConfirmDelete">{{ __('labels.delete') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="card card-flush mb-6 mb-xl-9">
                             <div class="card-header pt-5">
                                 <div class="card-title">
-                                    <h2 class="d-flex align-items-center">Users Assigned
+                                    <h2 class="d-flex align-items-center">{{ __('labels.user_assigned') }}
                                         <span class="text-gray-600 fs-6 ms-1">({{ $users->count() }})</span>
                                     </h2>
                                 </div>
@@ -68,9 +68,8 @@
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                         </i>
-                                        <input type="text" class="form-control w-250px ps-15"
-                                            placeholder="Search user" name="search" value="{{ request('search') }}"
-                                            id="InputSearch"
+                                        <input type="text" class="form-control w-250px ps-15" placeholder="{{ __('labels.search_user') }}"
+                                            name="search" value="{{ request('search') }}" id="InputSearch"
                                             data-search-url="{{ route('role-permission.show', $Roles->id) }}" />
                                     </div>
                                 </div>
@@ -80,9 +79,9 @@
                                     <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                         <thead>
                                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                                <th class="min-w-50px">ID</th>
-                                                <th class="min-w-150px">User</th>
-                                                <th class="min-w-125px">Joined Date</th>
+                                                <th class="min-w-50px">{{ __('labels.id') }}</th>
+                                                <th class="min-w-150px">{{ __('labels.user') }}</th>
+                                                <th class="min-w-125px">{{ __('labels.joined_date') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600 tablebody">

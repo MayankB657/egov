@@ -9,6 +9,7 @@ use App\Models\Topic;
 use App\Models\TopicComments;
 use App\Models\TopicFiles;
 use App\Models\TopicLogs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,12 @@ class CaseController extends Controller
             if ($value = $request->input($field)) {
                 $query->where($field, $value);
             }
+        }
+        if ($request->has('date')) {
+            [$startDate, $endDate] = explode(' - ', $request->date);
+            $start = Carbon::parse($startDate)->startOfDay();
+            $end = Carbon::parse($endDate)->endOfDay();
+            $query->whereBetween('created_at', [$start, $end]);
         }
         $data = $query->orderByDesc('id')->paginate(10);
         $i = ($request->input('page', 1) - 1) * 10;

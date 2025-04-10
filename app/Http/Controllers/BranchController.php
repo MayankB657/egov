@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\BranchImport;
 use App\Models\Branch;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BranchController extends Controller
 {
@@ -116,6 +118,19 @@ class BranchController extends Controller
             return response()->json(['status' => true, 'data' => $data]);
         } catch (\Throwable $th) {
             DB::rollback();
+            return response()->json(['status' => false, 'msg' => $th->getMessage()]);
+        }
+    }
+
+    public function import(Request $request)
+    {
+        try {
+            $request->validate([
+                'excel_file' => 'required|mimes:xlsx,xls,csv'
+            ]);
+            Excel::import(new BranchImport, $request->file('excel_file'));
+            return response()->json(['status' => true, 'msg' => 'Branch importing successfully in background.']);
+        } catch (\Throwable $th) {
             return response()->json(['status' => false, 'msg' => $th->getMessage()]);
         }
     }

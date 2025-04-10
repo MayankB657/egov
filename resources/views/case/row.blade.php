@@ -8,7 +8,8 @@
             <td>{{ ++$i }}</td>
             <td>{{ $row->subject->name }}</td>
             <td>{{ Str::limit($row->description, 100, '...') }}</td>
-            <td>{{ $row->letter_type == 'File' ? $row->rack_no : $row->letter_no }}</td>
+            <td>{{ $row->topic_type }}</td>
+            <td>{{ $row->topic_type == 'File' ? $row->rack_no : $row->letter_no }}</td>
             <td>{{ $row->received_from_name }}</td>
             <td>
                 <span class="badge badge-{{ Helper::statusColor($row->status) }} badgeStatus"

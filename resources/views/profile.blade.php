@@ -57,14 +57,14 @@
                                         class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.name') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
                                         <input type="text" name="name" class="form-control form-control-lg"
-                                            placeholder="Name" data-bvalidator="required" value="{{ $user->name }}" />
+                                            placeholder="{{ __('labels.name') }}" data-bvalidator="required" value="{{ $user->name }}" />
                                     </div>
                                 </div>
                                 <div class="row mb-6">
                                     <label
                                         class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.address') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
-                                        <textarea name="address" rows="4" class="form-control form-control-lg" placeholder="Address">{{ $user->address }}</textarea>
+                                        <textarea name="address" rows="4" class="form-control form-control-lg" placeholder="{{ __('labels.address') }}">{{ $user->address }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-6">
@@ -72,7 +72,7 @@
                                         class="col-lg-4 col-form-label required fw-semibold fs-6">{{ __('labels.language') }}</label>
                                     <div class="col-lg-8 fv-row form-group">
                                         <select class="form-select fw-bold" data-control="select2"
-                                            data-placeholder="Select language" data-bvalidator="required" name="language">
+                                            data-placeholder="{{ __('labels.select_language') }}" data-bvalidator="required" name="language">
                                             <option hidden></option>
                                             @foreach (config('app.languages') ?? [] as $key => $lang)
                                                 <option value="{{ $lang }}"
@@ -167,7 +167,7 @@
                                                     <label for="emailaddress"
                                                         class="form-label fs-6 fw-bold mb-3">{{ __('labels.new_email') }}</label>
                                                     <input type="email" class="form-control form-control-lg"
-                                                        id="emailaddress" placeholder="Email Address" name="email"
+                                                        id="emailaddress" placeholder="{{ __('labels.email') }}" name="email"
                                                         value="{{ $user->email }}" />
                                                 </div>
                                             </div>

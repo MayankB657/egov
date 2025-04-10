@@ -15,12 +15,12 @@
                                 <h1 class="text-gray-900 fw-bolder mb-3">{{ __('labels.sign_in') }}</h1>
                             </div>
                             <div class="fv-row mb-8">
-                                <input type="text" placeholder="Email" name="email" class="form-control bg-transparent"
+                                <input type="text" placeholder="{{ __('labels.email') }}" name="email" class="form-control bg-transparent"
                                     value="mayu.bhandure657@gmail.com" />
                             </div>
                             <div class="position-relative mb-3">
                                 <input class="form-control bg-transparent" type="password" name="password"
-                                    placeholder="Password" value="12345" />
+                                    placeholder="{{ __('labels.password') }}" value="12345" />
                                 <span
                                     class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2 showPassword">
                                     <i class="mb mb-eye-close text-muted fs-1"></i>

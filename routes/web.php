@@ -31,9 +31,7 @@ Route::get('migrate', function () {
     Artisan::call('migrate');
     return redirect()->route('Clear');
 });
-Route::get('/home', function () {
-    dd(ini_get('disable_functions'));
-});
+
 Route::middleware(['user.auth', 'permission', 'lastactivity'])->group(static function () {
     Route::resource('role-permission', RolePermissionController::class);
     Route::resource('permission-listing', PermissionListingController::class);
@@ -69,6 +67,9 @@ Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
     Route::get('get-outward-content/{id}', [OutwardLetterController::class, 'GetOutwardContent']);
     Route::get('remove-file/{id}', [InwardLetterController::class, 'RemoveFile'])->name('RemoveFile');
     Route::get('change-language/{lang}', [UsersController::class, 'ChangeLanguage'])->name('ChangeLanguage');
+    Route::post('department-import', [DepartmentController::class, 'import'])->name('ImportDepartment');
+    Route::post('branch-import', [BranchController::class, 'import'])->name('ImportBranch');
+    Route::post('user-import', [UsersController::class, 'import'])->name('ImportUsers');
 });
 
 Route::get('run-queue', function () {

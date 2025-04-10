@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Helper;
+use App\Imports\UserImport;
 use App\Models\Log;
 use App\Models\User;
 use Carbon\Carbon;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
@@ -209,5 +211,18 @@ class UsersController extends Controller
         $user->language = $lang;
         $user->save();
         return redirect()->back()->with('success', 'Language changed successfully.');
+    }
+
+    public function import(Request $request)
+    {
+        try {
+            $request->validate([
+                'excel_file' => 'required|mimes:xlsx,xls,csv'
+            ]);
+            Excel::import(new UserImport, $request->file('excel_file'));
+            return response()->json(['status' => true, 'msg' => 'Users importing successfully in background.']);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => false, 'msg' => $th->getMessage()]);
+        }
     }
 }

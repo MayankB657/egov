@@ -29,6 +29,12 @@ class InwardLetterController extends Controller
                 ->orWhere('outward_no', 'like', "%{$search}%")
                 ->orWhere('letter_no', 'like', "%{$search}%");
         }
+        if ($request->has('date')) {
+            [$startDate, $endDate] = explode(' - ', $request->date);
+            $start = Carbon::parse($startDate)->startOfDay();
+            $end = Carbon::parse($endDate)->endOfDay();
+            $query->whereBetween('created_at', [$start, $end]);
+        }
         foreach (['subject_id', 'department_id', 'branch_id', 'status', 'letter_type'] as $field) {
             if ($value = $request->input($field)) {
                 $query->where($field, $value);

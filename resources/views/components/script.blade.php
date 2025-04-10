@@ -43,6 +43,15 @@
         }
     });
 </script>
+<script>
+    const lbl_today = "{{ __('labels.today') }}";
+    const lbl_yesterday = "{{ __('labels.yesterday') }}";
+    const lbl_last_7_days = "{{ __('labels.last_7_days') }}";
+    const lbl_last_30_days = "{{ __('labels.last_30_days') }}";
+    const lbl_this_month = "{{ __('labels.this_month') }}";
+    const lbl_last_month = "{{ __('labels.last_month') }}";
+    const lbl_custom_dates = "{{ __('labels.custom_dates') }}";
+</script>
 <!--end::Bvalidation-->
 <script src="{{ url('/') }}/public/js/bvalidator/jquery.bvalidator.js"></script>
 <script src="{{ url('/') }}/public/js/bvalidator/bValidator.Bs3FormPresenter.js"></script>
@@ -110,7 +119,7 @@
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script> --}}
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         if (document.body.classList.contains("mr")) {
             const marathiDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
@@ -131,5 +140,5 @@
             traverseAndConvert(document.body);
         }
     });
-</script>
+</script> --}}
 @stack('js')

@@ -13,8 +13,9 @@
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                 </i>
-                                <input type="text" class="form-control w-250px ps-13" placeholder="Search Subject"
-                                    name="search" value="{{ request('search') }}" id="InputSearch"
+                                <input type="text" class="form-control w-250px ps-13"
+                                    placeholder="{{ __('labels.search_subject') }}" name="search"
+                                    value="{{ request('search') }}" id="InputSearch"
                                     data-search-url="{{ route('subject.index') }}" />
                             </div>
                         </div>

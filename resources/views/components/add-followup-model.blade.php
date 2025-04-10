@@ -10,7 +10,8 @@
             </div>
         </div>
         <div class="modal-body px-5 my-7">
-            <form class="form FormClass ajax-form-submit" action="{{ $type == 'case' ? route('AddCaseFollowup') : route('AddFollowup') }}"
+            <form class="form FormClass ajax-form-submit"
+                action="{{ $type == 'case' ? route('AddCaseFollowup') : route('AddFollowup') }}"
                 enctype="multipart/form-data" method="POST" data-dismiss-modal="FollowupModel" data-preloader="false"
                 data-refresh="false">
                 @csrf
@@ -23,20 +24,21 @@
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">{{ __('labels.officer_name') }}</span>
                         </label>
-                        <input class="form-control" name="officer_name" placeholder="Enter Name"
-                            data-bvalidator="required" />
+                        <input class="form-control" name="officer_name"
+                            placeholder="{{ __('labels.enter_officer_name') }}" data-bvalidator="required" />
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
                             {{ __('labels.officer_designation') }}
                         </label>
-                        <input class="form-control" name="officer_designation" placeholder="Enter Designation" />
+                        <input class="form-control" name="officer_designation"
+                            placeholder="{{ __('labels.enter_officer_designation') }}" />
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
                             {{ __('labels.remark') }}
                         </label>
-                        <textarea name="remark" rows="4" class="form-control" placeholder="Enter Remark"></textarea>
+                        <textarea name="remark" rows="4" class="form-control" placeholder="{{ __('labels.enter_remark') }}"></textarea>
                     </div>
                     <div class="fv-row mb-7 form-group">
                         <label class="fs-6 fw-semibold form-label mb-2">
@@ -47,13 +49,15 @@
                             data-bvalidator-msg="Please select file of type png, jpg, jpeg or pdf." />
                     </div>
                     <div class="text-center pt-10">
-                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
+                        <button type="reset" class="btn btn-light me-3"
+                            data-bs-dismiss="modal">{{ __('labels.discard') }}</button>
                         <button type="submit" class="btn btn-success me-10 btn-submit">
                             <span class="indicator-label">
                                 {{ __('labels.submit') }}
                             </span>
                             <span class="indicator-progress">
-                                {{ __('labels.please_wait') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                {{ __('labels.please_wait') }} <span
+                                    class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
                     </div>

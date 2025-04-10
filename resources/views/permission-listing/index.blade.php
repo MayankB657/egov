@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('title')
-        Permissions
+        {{ __('labels.permissions') }}
     @endpush
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10" id="kt_post">
@@ -18,7 +18,7 @@
                                     data-search-url="{{ route('permission-listing.index') }}" />
                             </div>
                         </div>
-                        <div class="card-toolbar">
+                        {{-- <div class="card-toolbar">
                             <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
                                 data-bs-target="#add_permission">
                                 <i class="ki-duotone ki-plus-square fs-3">
@@ -26,7 +26,7 @@
                                     <span class="path2"></span>
                                     <span class="path3"></span>
                                 </i>Add Permission</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body pt-0">
                         <div class="table-responsive">
@@ -34,9 +34,9 @@
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                         <th class="">Sr.No</th>
-                                        <th class="min-w-125px">Name</th>
+                                        {{-- <th class="min-w-125px">Name</th> --}}
                                         <th class="min-w-250px">Permission</th>
-                                        <th class="text-end min-w-100px">Actions</th>
+                                        {{-- <th class="text-end min-w-100px">Actions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600 tablebody">

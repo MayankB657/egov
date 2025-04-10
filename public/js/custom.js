@@ -107,6 +107,34 @@ $(document).ready(function () {
             minDate: minToday ? new Date() : null,
         });
     });
+    const initialDate = $(".flatRangepickr").val();
+    $(".flatRangepickr").daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            format: "YYYY/MM/DD",
+            customRangeLabel: lbl_custom_dates
+        },
+        autoApply: true,
+        ranges: {
+            [lbl_today]: [moment().locale('en'), moment().locale('en')],
+            [lbl_yesterday]: [moment().locale('en').subtract(1, "days"), moment().locale('en').subtract(1, "days")],
+            [lbl_last_7_days]: [moment().locale('en').subtract(6, "days"), moment().locale('en')],
+            [lbl_last_30_days]: [moment().locale('en').subtract(29, "days"), moment().locale('en')],
+            [lbl_this_month]: [moment().locale('en').startOf("month"), moment().locale('en').endOf("month")],
+            [lbl_last_month]: [moment().locale('en').subtract(1, "month").startOf("month"), moment().locale('en').subtract(1, "month").endOf("month")]
+        }
+    });
+
+    $(".flatRangepickr").on("apply.daterangepicker", function (ev, picker) {
+        $(this).val(picker.startDate.format("YYYY/MM/DD") + " - " + picker.endDate.format("YYYY/MM/DD"));
+    });
+
+    $(".flatRangepickr").on("cancel.daterangepicker", function (ev, picker) {
+        $(this).val("");
+    });
+    if (initialDate) {
+        $(".flatRangepickr").val(initialDate);
+    }
 
     $('.flatDatepickr').each(function () {
         const minToday = $(this).data('min-today') === true;
@@ -740,7 +768,7 @@ $(document).on('click', '.btnRemoveFile', function (e) {
                 type: "GET",
                 url: base_url + "//" + id,
                 success: function (response) {
-                    if(response.status == true){
+                    if (response.status == true) {
                         element.remove();
                     }
                 }
@@ -749,7 +777,7 @@ $(document).on('click', '.btnRemoveFile', function (e) {
     });
 });
 
-$(document).on('click','.langChange',function (e) {
+$(document).on('click', '.langChange', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
     window.location = url;

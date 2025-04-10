@@ -18,10 +18,12 @@
 <style>
     body {
         background-image: url('{{ asset('public/images/bg6.jpg') }}');
+        background-size: cover;
     }
 
     [data-bs-theme="dark"] body {
         background-image: url('{{ asset('public/images/bg6-dark.jpg') }}');
+        background-size: cover;
     }
 </style>
 
