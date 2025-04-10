@@ -220,4 +220,7 @@ return [
     'filter' => 'Filter',
     'filter_options' => 'Filter Options',
     'import_users' => 'Import Users',
+    'for_marathi_typing' => 'For Marathi typing',
+    'we_recommend_installing_the' => 'We recommend installing the',
+    'in_chrome_after_installing' => 'in Chrome. After installing, select "Marathi" as input language.',
 ];

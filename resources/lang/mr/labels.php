@@ -222,4 +222,7 @@ return [
     'filter' => 'फिल्टर',
     'filter_options' => 'फिल्टर विकल्प',
     'import_users' => 'युझर आयात',
+    'for_marathi_typing' => 'मराठी टायपिंगसाठी',
+    'we_recommend_installing_the' => 'आम्ही शिफारस करतो की तुम्ही',
+    'in_chrome_after_installing' => 'क्रोममध्ये स्थापित केल्यानंतर, इनपुट भाषा म्हणून "मराठी" निवडा.',
 ];

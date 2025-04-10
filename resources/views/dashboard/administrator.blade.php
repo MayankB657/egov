@@ -5,6 +5,26 @@
     @section('content')
         <div class="post d-flex flex-column-fluid mb-10">
             <div class="container-xxl">
+                @if (!session()->has('no_trans_notice'))
+                    <div class="alert alert-dismissible bg-light-primary d-flex flex-column flex-sm-row p-5 mb-10"
+                        id="no_trans_notice">
+                        <i class="bi bi-translate fs-2hx text-primary me-4 mb-5 mb-sm-0"></i>
+                        <div class="d-flex flex-column pe-0 pe-sm-10">
+                            <h4 class="fw-semibold">{{ __('labels.for_marathi_typing') }}</h4>
+                            <span>{{ __('labels.we_recommend_installing_the') }}
+                                <a href="https://chrome.google.com/webstore/detail/google-input-tools/mclkkofklkfljcocdinagocijmpgbhab"
+                                    target="_blank">
+                                    Google Input Tools Extension
+                                </a> {{ __('labels.in_chrome_after_installing') }}</span>
+                        </div>
+                        <button type="button" id="DismissTranselationNotice"
+                            class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto"
+                            data-bs-dismiss="alert">
+                            <i class="ki-duotone ki-cross fs-1 text-primary"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                        </button>
+                    </div>
+                @endif
                 @can('inward-letter.index')
                     <div class="mb-3">
                         <h3 class="fw-bold text-gray-800 fs-2qx">{{ __('labels.inward_management') }}</h3>

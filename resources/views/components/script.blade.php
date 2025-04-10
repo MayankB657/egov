@@ -110,15 +110,26 @@
         Notification.requestPermission().then((permission) => {});
     }
 </script>
-{{-- <script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en'
-        }, 'google_translate_element');
-    }
+<script>
+    $(document).ready(function() {
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        var transNoticeDiv = $('#no_trans_notice');
+        if (isChrome && transNoticeDiv.length > 0) {
+            transNoticeDiv.removeClass('d-none');
+        }
+    });
+    $('#DismissTranselationNotice').click(function(e) {
+        $.ajax({
+            type: "POST",
+            url: base_url + "/set-no-trans-notice",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            }
+        });
+    });
 </script>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script> --}}
+
 {{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         if (document.body.classList.contains("mr")) {

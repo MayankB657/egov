@@ -70,6 +70,10 @@ Route::middleware(['user.auth', 'lastactivity'])->group(static function () {
     Route::post('department-import', [DepartmentController::class, 'import'])->name('ImportDepartment');
     Route::post('branch-import', [BranchController::class, 'import'])->name('ImportBranch');
     Route::post('user-import', [UsersController::class, 'import'])->name('ImportUsers');
+    Route::post('set-no-trans-notice', function () {
+        session()->put('no_trans_notice', true);
+        return response()->json(['status' => 'ok']);
+    });
 });
 
 Route::get('run-queue', function () {
